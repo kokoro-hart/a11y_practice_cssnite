@@ -1,0 +1,151 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.videoTrigger__inner {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: fit-content;
+  padding-left: 5px;
+  margin-right: auto;
+
+  @include mq(md) {
+    gap: 12px;
+  }
+
+  @include mq(lg) {
+    gap: 25px;
+  }
+
+  @include hover {
+    .videoTrigger__picture {
+      img {
+        filter: brightness(80%);
+      }
+    }
+
+    .videoTrigger__body {
+      opacity: 0.7;
+    }
+
+    .videoTrigger__link {
+      svg {
+        transform: translateY(-50%) translateX(5px);
+      }
+    }
+  }
+}
+
+.videoTrigger__picture {
+  @include mq(lg, max) {
+    width: 112px;
+  }
+
+  display: block;
+  aspect-ratio: 199 / 96;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: filter 0.6s $ease_out_quint;
+  }
+}
+
+.videoTrigger__body {
+  color: $color_white;
+  transition: opacity 0.45s $ease_out_quint;
+
+  @include mq(md) {
+    transform: translateY(-5px);
+  }
+
+  @include mq(lg) {
+    padding-top: 1px;
+    transform: none;
+  }
+}
+
+.videoTrigger__heading {
+  overflow: hidden;
+  @include mq(md) {
+    span {
+      @include font_secondary;
+
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    @include font_secondary;
+
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  @include mq(lg) {
+    @include fz(24);
+    @include lh(29, 24);
+
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    transform: translateY(-6px);
+
+    span {
+      font-weight: 600;
+      @include fz(20);
+      @include lh(24, 20);
+    }
+  }
+}
+
+.videoTrigger__link {
+  position: relative;
+  display: inline-block;
+  @include font_secondary;
+
+  @include mq(md) {
+    padding-right: 11px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  @include mq(lg) {
+    padding-right: 23px;
+    margin-top: 19px;
+    transform: none;
+    @include fz(15);
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transition: transform 0.4s $ease_out_quint;
+    transform: translateY(-50%);
+  }
+}
+
+.videoTrigger__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.videoTrigger__arrow {
+  @include mq(md) {
+    width: 5px;
+    height: 9px;
+  }
+
+  @include mq(lg) {
+    width: 9px;
+    height: 16px;
+  }
+}

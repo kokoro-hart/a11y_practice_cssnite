@@ -1,0 +1,7 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.spotsWithSlider {
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+}

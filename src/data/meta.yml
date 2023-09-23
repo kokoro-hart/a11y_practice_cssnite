@@ -1,0 +1,9 @@
+lang: "en"
+siteName: "CONNECTED JAPAN AWAITS YOU"
+
+meta:
+  title: "CONNECTED JAPAN AWAITS YOU"
+  description: "not description"
+  "og:title": "not title"
+  "og:description": "not description"
+  "og:image": "/ogp.png"

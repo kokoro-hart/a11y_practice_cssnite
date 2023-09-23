@@ -1,0 +1,16 @@
+---
+import Saitama from "@/features/Areas/Saitama.astro"
+import AppLayout from "@/layouts/AppLayout/AppLayout.astro"
+import LayoutWithBreadcrumbs from "@/layouts/LayoutWithBreadcrumbs/LayoutWithBreadcrumbs.astro"
+
+const meta = {
+  title: "SAITAMA",
+  description: "",
+}
+---
+
+<AppLayout meta={meta} theme={"saitama"}>
+  <LayoutWithBreadcrumbs page={"areaPage"} area={"saitama"} className={"md:pt-[60px] lg:pt-[64px]"} size={"xl"}>
+    <Saitama className={"mt-[45px] md:mt-[30px] lg:mt-[60px]"} />
+  </LayoutWithBreadcrumbs>
+</AppLayout>

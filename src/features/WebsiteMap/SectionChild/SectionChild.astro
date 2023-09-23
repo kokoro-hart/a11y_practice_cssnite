@@ -1,0 +1,19 @@
+---
+import styles from "./SectionChild.module.scss"
+
+import type { PropsWithClassName } from "@/types"
+import type { HTMLTagString } from "@/types/astro"
+
+type Props = PropsWithClassName & {
+  tag?: HTMLTagString
+  title: string
+}
+const { className, title, tag: Tag = "h3" } = Astro.props
+---
+
+<section class:list={[styles.sectionChild, className]}>
+  <Tag class={styles.sectionChild__heading}>{title}</Tag>
+  <div class={styles.sectionChild__inner}>
+    <slot />
+  </div>
+</section>

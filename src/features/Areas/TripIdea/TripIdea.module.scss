@@ -1,0 +1,93 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+$gapMd: 27px;
+$gapLg: 80px;
+
+.tripIdea__heading {
+  @include mq(md, max) {
+    justify-content: center;
+  }
+}
+
+.tripIdea__inner {
+  @include mq(md) {
+    display: flex;
+    gap: $gapMd;
+    align-items: flex-start;
+  }
+  @include mq(lg) {
+    gap: $gapLg;
+  }
+}
+
+.tripIdea__body {
+  @include mq(md) {
+    width: calc(60% - $gapMd / 2);
+  }
+  @include mq(lg) {
+    width: calc(61% - $gapLg / 2);
+  }
+}
+
+.tripIdea__desc {
+  margin-top: 24px;
+  @include fz(14);
+  @include lh(21, 14);
+
+  @include mq(md) {
+    @include lh(23.8, 14);
+  }
+
+  @include mq(lg) {
+    margin-top: 10px;
+    @include fz(16);
+    @include lh(27.2, 16);
+
+    letter-spacing: 0.05em;
+  }
+}
+
+.tripIdea__picture {
+  display: block;
+  width: 100%;
+  @include mq(md, max) {
+    max-width: 350px;
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include mq(md) {
+    width: 60%;
+  }
+
+  @include mq(md, max) {
+    width: 74%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include mq(md) {
+    width: calc(40% - $gapMd / 2);
+  }
+
+  @include mq(lg) {
+    width: calc(37% - $gapLg / 2);
+  }
+
+  .tripIdea__img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.tripIdea__linkWrap {
+  @include mq(md, max) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

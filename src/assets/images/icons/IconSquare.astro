@@ -1,0 +1,11 @@
+---
+import type { PropsWithClassName } from "@/types"
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<svg class={className} width="10" height="8" viewBox="0 0 10 8" fill="none">
+  <path d="M9.5 0.128905L0.5 0.128906L5 7.12891" fill="#2F8D2F"></path>
+</svg>

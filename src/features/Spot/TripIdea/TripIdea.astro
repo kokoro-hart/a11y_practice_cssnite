@@ -1,0 +1,84 @@
+---
+import styles from "./TripIdea.module.scss"
+
+import routeChibaJpg from "@/assets/images/common/banner_route_chiba.jpg"
+import routeChibaWebp from "@/assets/images/common/banner_route_chiba.webp"
+import routeKanagawaJpg from "@/assets/images/common/banner_route_kanagawa.jpg"
+import routeKanagawaWebp from "@/assets/images/common/banner_route_kanagawa.webp"
+import routeSaitamaJpg from "@/assets/images/common/banner_route_saitama.jpg"
+import routeSaitamaWebp from "@/assets/images/common/banner_route_saitama.webp"
+import routeTokyoJpg from "@/assets/images/common/banner_route_tokyo.jpg"
+import routeTokyoWebp from "@/assets/images/common/banner_route_tokyo.webp"
+import routeYamanashiJpg from "@/assets/images/common/banner_route_yamanashi.jpg"
+import routeYamanashiWebp from "@/assets/images/common/banner_route_yamanashi.webp"
+import Heading from "@/components/Heading/Heading.astro"
+import ThreePieceSlider from "@/components/Sliders/ThreePieceSlider/ThreePieceSlider.astro"
+import type { PropsWithClassName } from "@/types"
+import { getPath } from "@/utils"
+
+const routeSlides = [
+  {
+    common: routeTokyoJpg.src,
+    webp: routeTokyoWebp.src,
+    width: routeTokyoJpg.width,
+    height: routeTokyoJpg.height,
+    alt: "Tokyo With All",
+    href: getPath.tokyo.route,
+  },
+  {
+    common: routeSaitamaJpg.src,
+    webp: routeSaitamaWebp.src,
+    width: routeSaitamaJpg.width,
+    height: routeSaitamaJpg.height,
+    alt: "Tokyo & Saitama",
+    href: getPath.saitama.route,
+  },
+  {
+    common: routeKanagawaJpg.src,
+    webp: routeKanagawaWebp.src,
+    width: routeKanagawaJpg.width,
+    height: routeKanagawaJpg.height,
+    alt: "Tokyo & Kanagawa",
+    href: getPath.kanagawa.route,
+  },
+  {
+    common: routeChibaJpg.src,
+    webp: routeChibaWebp.src,
+    width: routeChibaJpg.width,
+    height: routeChibaJpg.height,
+    alt: "Tokyo & Chiba",
+    href: getPath.chiba.route,
+  },
+  {
+    common: routeYamanashiJpg.src,
+    webp: routeYamanashiWebp.src,
+    width: routeYamanashiJpg.width,
+    height: routeYamanashiJpg.height,
+    alt: "Tokyo & Yamanashi",
+    href: getPath.yamanashi.route,
+  },
+]
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<div class:list={[styles.tripIdea, className]}>
+  <Heading size={"sm"} className={`${styles.tripIdea__heading} max-md:hidden max-md:justify-center`}>
+    1-3 Days Trip Idea
+  </Heading>
+  <Heading size={"sm"} className={"md:hidden max-md:justify-center"}>Trip Idea</Heading>
+  <div class={styles.tripIdea__inner}>
+    <ThreePieceSlider
+      className={"mt-[24px] md:mt-[25px] lg:mt-[40px]"}
+      rootSelector={"js-three-piece-slider-route"}
+      slides={routeSlides}
+    />
+  </div>
+</div>
+
+<script>
+  import { threePieceSlider } from "@/assets/scripts/slider"
+  threePieceSlider(".js-three-piece-slider-route")
+</script>

@@ -1,0 +1,52 @@
+---
+import styles from "./Access.module.scss"
+
+import IconAirplane from "@/assets/images/icons/IconAirplane.astro"
+import IconCar from "@/assets/images/icons/IconCar.astro"
+import IconPin from "@/assets/images/icons/IconPin.astro"
+import IconTrain from "@/assets/images/icons/IconTrain.astro"
+import IconWalk from "@/assets/images/icons/IconWalk.astro"
+import type { PropsWithClassName } from "@/types"
+import { toUpperCamelCase } from "@/utils"
+
+type Props = PropsWithClassName & {
+  linePlacement?: "both" | "top" | "bottom"
+  methods: {
+    type: "airplane" | "train" | "car" | "walk"
+    desc: string
+  }[]
+}
+
+const { className, methods, linePlacement = "both" } = Astro.props
+---
+
+<div class:list={[styles.access, className]}>
+  <div class={styles.access__inner}>
+    <div class={styles.routeLine} data-line-placement={linePlacement}>
+      <span class={styles.routeLine__circle}></span>
+    </div>
+    <div class={styles.access__body}>
+      <p class={styles.access__heading}><IconPin className={styles.access__headingIcon} />Access</p>
+      <div class={styles.access__list}>
+        {
+          methods.map(({ type, desc }) => (
+            <div class={styles.access__item} data-type={type}>
+              <p class={styles.access__type}>
+                {
+                  {
+                    ["airplane"]: <IconAirplane />,
+                    ["train"]: <IconTrain />,
+                    ["car"]: <IconCar />,
+                    ["walk"]: <IconWalk />,
+                  }[type]
+                }
+                {toUpperCamelCase(type)} <span class={"max-md:hidden"}>:</span>
+              </p>
+              <p class={styles.access__desc}>{desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>

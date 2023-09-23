@@ -1,0 +1,18 @@
+---
+import type { PropsWithClassName } from "@/types"
+
+type Props = PropsWithClassName & {
+  color?: string
+  width?: number
+  height?: number
+}
+
+const { color = "#2F8D2F", width = 41, height = 42, className } = Astro.props
+---
+
+<svg class={className} width={width} height={height} viewBox="0 0 41 42" fill="none">
+  <circle cx="20.5" cy="20.8325" r="19" transform="rotate(180 20.5 20.8325)" stroke={color} stroke-width="3"></circle>
+  <path
+    d="M26 11.7447L17.5393 20.657L26 29.5888L23.3953 32.3325L12.3114 20.657L23.3953 8.98145L26 11.7447Z"
+    fill={color}></path>
+</svg>

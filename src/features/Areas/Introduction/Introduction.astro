@@ -1,0 +1,25 @@
+---
+import styles from "./Introduction.module.scss"
+
+import SingleSlider, { SingleSliderProps } from "@/components/Sliders/SingleSlider/SingleSlider.astro"
+import type { PropsWithClassName } from "@/types"
+
+export type IntroductionProps = PropsWithClassName & {
+  text: string
+  images: SingleSliderProps[]
+}
+
+type Props = IntroductionProps
+
+const { text, images, className } = Astro.props
+---
+
+<section class:list={[styles.introduction, className]}>
+  <h2 class="sr-only">Introduction</h2>
+  <div class={styles.introduction__inner}>
+    <p class={styles.introduction__text} set:html={text} />
+    <div class={styles.introduction__slider}>
+      <SingleSlider images={images} />
+    </div>
+  </div>
+</section>

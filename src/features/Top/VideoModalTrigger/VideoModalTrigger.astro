@@ -1,0 +1,41 @@
+---
+import styles from "./VideoModalTrigger.module.scss"
+
+import IconArrowRight from "@/assets/images/icons/IconArrowRight.astro"
+import thumbnailJpg from "@/assets/images/top/video_thumbnail.jpg"
+import thumbnailWebp from "@/assets/images/top/video_thumbnail.webp"
+import type { PropsWithClassName } from "@/types"
+
+type Props = PropsWithClassName
+
+const { className, ...props } = Astro.props
+---
+
+<div class:list={[styles.videoTrigger, className]} {...props}>
+  <div class={styles.videoTrigger__inner}>
+    <picture class={styles.videoTrigger__picture}>
+      <source srcset={thumbnailWebp.src} type="image/webp" />
+      <img
+        class={styles.videoTrigger__img}
+        src={thumbnailJpg.src}
+        width={thumbnailJpg.width}
+        height={thumbnailJpg.height}
+        decoding="async"
+        alt=""
+      />
+    </picture>
+    <div class={styles.videoTrigger__body}>
+      <p class={styles.videoTrigger__heading}>
+        <span>Video</span>
+        <br />
+        Before traveling
+      </p>
+      <p class={styles.videoTrigger__link}>
+        For Details<IconArrowRight className={styles.videoTrigger__arrow} width={9} height={16} color={"white"} />
+      </p>
+    </div>
+    <button type="button" class={styles.videoTrigger__button} data-micromodal-trigger="video-modal">
+      <span class="sr-only">Open the modal and watch the video</span>
+    </button>
+  </div>
+</div>

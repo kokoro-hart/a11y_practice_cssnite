@@ -1,0 +1,24 @@
+---
+import styles from "./Contents.module.scss"
+
+import Heading from "@/components/Heading/Heading.astro"
+import type { PropsWithClassName } from "@/types"
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<div class:list={[styles.contents, className]}>
+  <div class={styles.contents__title}>
+    <Heading tag="h1" className={"max-md:justify-center lg:justify-center"}>Website Map</Heading>
+  </div>
+  <div class={styles.contents__body}>
+    <p class={styles.contents__text}>
+      <a href="/" class={styles.contents__link}>
+        <span class="uppercase">Connected Japan awaits you</span> Top page
+      </a>
+    </p>
+    <slot />
+  </div>
+</div>

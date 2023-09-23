@@ -1,0 +1,90 @@
+---
+import AreaTemplate from "./AreaTemplate.astro"
+
+import sliderPng01 from "@/assets/images/area/saitama/single_slider_thumb_01.png"
+import sliderWebp01 from "@/assets/images/area/saitama/single_slider_thumb_01.webp"
+import sliderPng02 from "@/assets/images/area/saitama/single_slider_thumb_02.png"
+import sliderWebp02 from "@/assets/images/area/saitama/single_slider_thumb_02.webp"
+import sliderPng03 from "@/assets/images/area/saitama/single_slider_thumb_03.png"
+import sliderWebp03 from "@/assets/images/area/saitama/single_slider_thumb_03.webp"
+import accessPng from "@/assets/images/area/yamanashi/map_yamanashi.png"
+import tripIdeaPng from "@/assets/images/area/yamanashi/route_yamanashi.png"
+import tripIdeaSpPng from "@/assets/images/area/yamanashi/route_yamanashi_sp.png"
+import spotsData from "@/data/spots.json"
+import { useFormatSpotsForArea } from "@/hooks"
+import type { PropsWithClassName } from "@/types"
+
+const introduction = {
+  // TODO: テキスト流し込み
+  text: "Although Saitama Prefecture is an inland prefecture located in the Kanto Plain, it is blessed with waterfront space,including two major rivers, the Arakawa and Tone Rivers, and clear streams such as Nagatoro and Hanno Riverbanks. Alarge-scale cycling road has been developed along the river, and it is one of the most popular cycling courses inJapan.<br /><br />Located in the Tokyo metropolitan area, Saitama has a well-developed transportation network that includes six expresswaysand 24 railroad lines connecting east, west, north, south, and west.<br />During the Edo period (1603-1867), Saitama was a major transportation hub, and even today, retro streetscapes reminiscentof the Edo period can be seen in some towns such as Kawagoe.<br />In mountainous areas such as Chichibu, visitors can enjoy hiking and seasonal flowers in the abundant nature, and greentea plantations can be seen in the nature-rich Sayama Hills area.",
+  images: [
+    {
+      common: sliderPng01.src,
+      webp: sliderWebp01.src,
+      width: sliderPng01.width,
+      height: sliderPng01.width,
+      alt: "Yamanashi Prefecture Sightseeing Spots",
+    },
+    {
+      common: sliderPng02.src,
+      webp: sliderWebp02.src,
+      width: sliderPng02.width,
+      height: sliderPng02.width,
+      alt: "Yamanashi Prefecture Sightseeing Spots",
+    },
+    {
+      common: sliderPng03.src,
+      webp: sliderWebp03.src,
+      width: sliderPng03.width,
+      height: sliderPng03.width,
+      alt: "Yamanashi Prefecture Sightseeing Spots",
+    },
+    {
+      common: sliderPng02.src,
+      webp: sliderWebp02.src,
+      width: sliderPng02.width,
+      height: sliderPng02.width,
+      alt: "Yamanashi Prefecture Sightseeing Spots",
+    },
+  ],
+}
+
+const acccess = {
+  text: 'Access from Tokyo to Saitama can be made by train starting from Tokyo Station and Ikebukuro Station to the following directions.Kasukabe, located in the eastern part of Saitama: approximately 50 minutes from Tokyo Station by JR Ueno Tokyo Line and Tobu Skytree Line.Kawagoe, located in the western part of Saitama: 30 minutes from Ikebukuro Station by express train on the Tobu Tojo Line.Kumagaya, located in the northern part of Saitama: From Ikebukuro Station, it is approximately 65 minutes by JR Shonan Shinjuku Line rapid train. From Tokyo Station, it is approximately 80 minutes by JR Shonan Shinjuku Line.Omiya, located in the central area of Saitama: Approximately 25 minutes from Tokyo Station by JR Tohoku Shinkansen and 35 minutes by JR Takasaki Line and Utsunomiya Line.Chichibu area: From Ikebukuro Station to Seibu-Chichibu Station, it takes about 80 minutes by Seibu-Chichibu Line Limited Express "La View".Translated with DeepL',
+  image: {
+    src: accessPng.src,
+    width: accessPng.width,
+    height: accessPng.height,
+    alt: "Image of a map showing the location of Tokyo, Saitama, Yamanashi, Kanagawa, and Chiba prefectures. Yamanashi Prefecture is marked with a pin.",
+  },
+}
+
+const tripIdea = {
+  theme: "yamanashi",
+  text: "Saitama and Tokyo are located very close to each other. In fact, Saitama is a prefecture that borders Tokyo and is considered part of the Greater Tokyo Area. Depending on the specific location in Saitama and Tokyo, the distance between the two can range from just a few kilometers to around 50 kilometers. Additionally, there are many transportation options such as trains, buses, and highways that connect the two prefectures, making it easy and convenient to travel between them.",
+  image: {
+    src: tripIdeaPng.src,
+    srcSp: tripIdeaSpPng.src,
+    width: tripIdeaPng.width,
+    height: tripIdeaPng.height,
+    alt: "Image of user interface showing time sequence",
+  },
+} as const
+
+const { spotCards, categories } = useFormatSpotsForArea(spotsData, "yamanashi")
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<div class={className}>
+  <AreaTemplate
+    title={"Yamanashi"}
+    introduction={introduction}
+    access={acccess}
+    tripIdea={tripIdea}
+    spotCards={spotCards}
+    categories={categories}
+  />
+</div>

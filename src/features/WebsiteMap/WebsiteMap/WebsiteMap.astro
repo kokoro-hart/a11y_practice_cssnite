@@ -1,0 +1,138 @@
+---
+import styles from "./WebsiteMap.module.scss"
+
+import List from "@/features/WebsiteMap/List/List.astro"
+import type { LinkProps } from "@/features/WebsiteMap/List/List.astro"
+import Section from "@/features/WebsiteMap/Section/Section.astro"
+import SectionChild from "@/features/WebsiteMap/SectionChild/SectionChild.astro"
+import { getPath } from "@/utils"
+
+type Props = {
+  categories: string[]
+}
+
+const { categories } = Astro.props
+
+const ariaPageLinks: LinkProps[] = [
+  {
+    href: getPath.tokyo.area,
+    text: "Tokyo",
+  },
+  {
+    href: getPath.saitama.area,
+    text: "Saitama",
+  },
+  {
+    href: getPath.chiba.area,
+    text: "Chiba",
+  },
+  {
+    href: getPath.kanagawa.area,
+    text: "Kanagawa",
+  },
+  {
+    href: getPath.yamanashi.area,
+    text: "Yamanashi",
+  },
+]
+
+const touristRoutePageLinks: LinkProps[] = [
+  {
+    href: getPath.tokyo.route,
+    text: "Tokyo With All",
+  },
+  {
+    href: getPath.saitama.route,
+    text: "Tokyo & Saitama",
+  },
+  {
+    href: getPath.chiba.route,
+    text: "Tokyo & Chiba",
+  },
+  {
+    href: getPath.kanagawa.route,
+    text: "Tokyo & Kanagawa",
+  },
+  {
+    href: getPath.yamanashi.route,
+    text: "Tokyo & Yamanashi",
+  },
+]
+
+const spotPageLinks: LinkProps[] = categories.map((category) => ({
+  href: getPath.spotForCategoryParams(category),
+  text: category.charAt(0).toUpperCase() + category.slice(1),
+}))
+
+const videoBeforeTravelingLinks: LinkProps[] = [
+  {
+    videoTrigger: "video-modal",
+    videoPanel: 1,
+    text: "Full ver《120sec》",
+  },
+  {
+    videoTrigger: "video-modal",
+    videoPanel: 2,
+    text: "Short ver《30sec》",
+  },
+]
+
+const videoWhileTravelingLinks: LinkProps[] = [
+  {
+    text: "Full ver《120sec》",
+    isDisabled: true,
+  },
+  {
+    text: "Short ver《30sec》",
+    isDisabled: true,
+  },
+]
+
+const informationLinks: LinkProps[] = [
+  {
+    href: getPath.termsOfUse,
+    text: "Terms of Use",
+  },
+  {
+    href: getPath.privacyPolicy,
+    text: "Privacy Policy",
+  },
+  {
+    href: getPath.websitePolicy,
+    text: "Website Policy",
+  },
+  {
+    href: getPath.websiteMap,
+    text: "Website Map",
+  },
+]
+---
+
+<Section title="Area Page">
+  <div class={styles.inner}>
+    <List links={ariaPageLinks} />
+  </div>
+</Section>
+<Section title="Tourist Route Page">
+  <div class={styles.inner}>
+    <List links={touristRoutePageLinks} />
+  </div>
+</Section>
+<Section title="Spot Page">
+  <div class={styles.inner}>
+    <List links={spotPageLinks} />
+  </div>
+</Section>
+<Section title="Video">
+  <SectionChild title="Before Traveling">
+    <List links={videoBeforeTravelingLinks} />
+  </SectionChild>
+  <SectionChild title="While Traveling">
+    <List links={videoWhileTravelingLinks} />
+  </SectionChild>
+</Section>
+<Section title="Information">
+  <div class={styles.inner}>
+    <List links={informationLinks} />
+  </div>
+</Section>

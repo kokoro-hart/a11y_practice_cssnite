@@ -1,0 +1,21 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.section {
+  & + .section {
+    margin-top: 33px;
+    @include mq(md) {
+      margin-top: 54px;
+    }
+    @include mq(lg) {
+      margin-top: 54px;
+    }
+  }
+}
+
+.section__inner {
+  margin-top: 18px;
+  @include mq(md) {
+    margin-top: 20px;
+  }
+}

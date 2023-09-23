@@ -1,0 +1,14 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.tripIdea__heading {
+  @include mq(md) {
+    padding-right: 64px;
+    padding-left: 64px;
+  }
+
+  @include mq(lg) {
+    padding-right: 97px;
+    padding-left: 97px;
+  }
+}

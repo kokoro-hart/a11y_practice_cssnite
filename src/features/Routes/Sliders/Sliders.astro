@@ -1,0 +1,151 @@
+---
+import styles from "./Sliders.module.scss"
+
+import areaChibaJpg from "@/assets/images/common/banner_area_chiba.jpg"
+import areaChibaWebp from "@/assets/images/common/banner_area_chiba.webp"
+import areaKanagawaJpg from "@/assets/images/common/banner_area_kanagawa.jpg"
+import areaKanagawaWebp from "@/assets/images/common/banner_area_kanagawa.webp"
+import areaSaitamaJpg from "@/assets/images/common/banner_area_saitama.jpg"
+import areaSaitamaWebp from "@/assets/images/common/banner_area_saitama.webp"
+import areaTokyoJpg from "@/assets/images/common/banner_area_tokyo.jpg"
+import areaTokyoWebp from "@/assets/images/common/banner_area_tokyo.webp"
+import areaYamanashiJpg from "@/assets/images/common/banner_area_yamanashi.jpg"
+import areaYamanashiWebp from "@/assets/images/common/banner_area_yamanashi.webp"
+import routeChibaJpg from "@/assets/images/common/banner_route_chiba.jpg"
+import routeChibaWebp from "@/assets/images/common/banner_route_chiba.webp"
+import routeKanagawaJpg from "@/assets/images/common/banner_route_kanagawa.jpg"
+import routeKanagawaWebp from "@/assets/images/common/banner_route_kanagawa.webp"
+import routeSaitamaJpg from "@/assets/images/common/banner_route_saitama.jpg"
+import routeSaitamaWebp from "@/assets/images/common/banner_route_saitama.webp"
+import routeTokyoJpg from "@/assets/images/common/banner_route_tokyo.jpg"
+import routeTokyoWebp from "@/assets/images/common/banner_route_tokyo.webp"
+import routeYamanashiJpg from "@/assets/images/common/banner_route_yamanashi.jpg"
+import routeYamanashiWebp from "@/assets/images/common/banner_route_yamanashi.webp"
+import Heading from "@/components/Heading/Heading.astro"
+import ThreePieceSlider from "@/components/Sliders/ThreePieceSlider/ThreePieceSlider.astro"
+import Container from "@/layouts/Container/Container.astro"
+import type { PropsWithClassName } from "@/types"
+import { getPath } from "@/utils"
+
+const routeSlides = [
+  {
+    common: routeTokyoJpg.src,
+    webp: routeTokyoWebp.src,
+    width: routeTokyoJpg.width,
+    height: routeTokyoJpg.height,
+    alt: "Tokyo With All",
+    href: getPath.tokyo.route,
+  },
+  {
+    common: routeSaitamaJpg.src,
+    webp: routeSaitamaWebp.src,
+    width: routeSaitamaJpg.width,
+    height: routeSaitamaJpg.height,
+    alt: "Tokyo & Saitama",
+    href: getPath.saitama.route,
+  },
+  {
+    common: routeKanagawaJpg.src,
+    webp: routeKanagawaWebp.src,
+    width: routeKanagawaJpg.width,
+    height: routeKanagawaJpg.height,
+    alt: "Tokyo & Kanagawa",
+    href: getPath.kanagawa.route,
+  },
+  {
+    common: routeChibaJpg.src,
+    webp: routeChibaWebp.src,
+    width: routeChibaJpg.width,
+    height: routeChibaJpg.height,
+    alt: "Tokyo & Chiba",
+    href: getPath.chiba.route,
+  },
+  {
+    common: routeYamanashiJpg.src,
+    webp: routeYamanashiWebp.src,
+    width: routeYamanashiJpg.width,
+    height: routeYamanashiJpg.height,
+    alt: "Tokyo & Yamanashi",
+    href: getPath.yamanashi.route,
+  },
+]
+
+const areaSlides = [
+  {
+    common: areaTokyoJpg.src,
+    webp: areaTokyoWebp.src,
+    width: areaTokyoJpg.width,
+    height: areaTokyoJpg.height,
+    alt: "Tokyo",
+    href: getPath.tokyo.area,
+  },
+  {
+    common: areaSaitamaJpg.src,
+    webp: areaSaitamaWebp.src,
+    width: areaSaitamaJpg.width,
+    height: areaSaitamaJpg.height,
+    alt: "Saitama",
+    href: getPath.saitama.area,
+  },
+  {
+    common: areaKanagawaJpg.src,
+    webp: areaKanagawaWebp.src,
+    width: areaKanagawaJpg.width,
+    height: areaKanagawaJpg.height,
+    alt: "Kanagawa",
+    href: getPath.kanagawa.area,
+  },
+  {
+    common: areaChibaJpg.src,
+    webp: areaChibaWebp.src,
+    width: areaChibaJpg.width,
+    height: areaChibaJpg.height,
+    alt: "Chiba",
+    href: getPath.chiba.area,
+  },
+  {
+    common: areaYamanashiJpg.src,
+    webp: areaYamanashiWebp.src,
+    width: areaYamanashiJpg.width,
+    height: areaYamanashiJpg.height,
+    alt: "Yamanashi",
+    href: getPath.yamanashi.area,
+  },
+]
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<div class:list={[styles.sliders, className]}>
+  <Container>
+    <section class={styles.sliders__section}>
+      <div class={styles.sliders__heading}>
+        <Heading size={"sm"} className={"max-md:hidden max-md:justify-center"}>1-3 Days Trip Idea</Heading>
+        <Heading size={"sm"} className={"md:hidden max-md:justify-center"}>Trip Idea</Heading>
+      </div>
+      <ThreePieceSlider
+        className={"mt-[24px] md:mt-[25px] lg:mt-[40px]"}
+        rootSelector={"js-three-piece-slider-route"}
+        slides={routeSlides}
+      />
+    </section>
+    <section class={styles.sliders__section}>
+      <div class={styles.sliders__heading}>
+        <Heading size={"sm"} className={"max-md:justify-center"}>Other Areas</Heading>
+      </div>
+      <ThreePieceSlider
+        className={"mt-[24px] md:mt-[25px] lg:mt-[40px]"}
+        rootSelector={"js-three-piece-slider-area"}
+        slides={areaSlides}
+      />
+    </section>
+  </Container>
+</div>
+
+<script>
+  import { threePieceSlider } from "@/assets/scripts/slider"
+  threePieceSlider(".js-three-piece-slider-route")
+  threePieceSlider(".js-three-piece-slider-area")
+</script>

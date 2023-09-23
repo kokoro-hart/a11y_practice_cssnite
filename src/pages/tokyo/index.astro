@@ -1,0 +1,16 @@
+---
+import Tokyo from "@/features/Areas/Tokyo.astro"
+import AppLayout from "@/layouts/AppLayout/AppLayout.astro"
+import LayoutWithBreadcrumbs from "@/layouts/LayoutWithBreadcrumbs/LayoutWithBreadcrumbs.astro"
+
+const meta = {
+  title: "TOKYO",
+  description: "",
+}
+---
+
+<AppLayout meta={meta} theme={"tokyo"}>
+  <LayoutWithBreadcrumbs page={"areaPage"} area={"tokyo"} className={"md:pt-[60px] lg:pt-[64px]"} size={"xl"}>
+    <Tokyo className={"mt-[45px] md:mt-[30px] lg:mt-[60px]"} />
+  </LayoutWithBreadcrumbs>
+</AppLayout>

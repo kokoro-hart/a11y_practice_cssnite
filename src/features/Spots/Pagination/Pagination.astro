@@ -1,0 +1,23 @@
+---
+import styles from "./Pagination.module.scss"
+
+import IconArrowLeft from "@/assets/images/icons/IconArrowLeft.astro"
+import IconArrowRight from "@/assets/images/icons/IconArrowRight.astro"
+import type { PropsWithClassName } from "@/types"
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<div class:list={[styles.pagination, className]}>
+  <div class={styles.pagination__inner}>
+    <button type="button" class:list={[styles.pagination__prev, "js-paginationPrev"]} aria-label={"Back to previous page"}>
+      <IconArrowLeft width={10} height={16} />
+    </button>
+    <div class:list={[styles.pagination__counter, "js-paginationCounter"]}></div>
+    <button type="button" class:list={[styles.pagination__next, "js-paginationNext"]} aria-label={"Go to next page"}>
+      <IconArrowRight width={10} height={16} />
+    </button>
+  </div>
+</div>

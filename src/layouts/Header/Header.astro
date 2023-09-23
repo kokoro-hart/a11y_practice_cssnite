@@ -1,0 +1,55 @@
+---
+import styles from "./Header.module.scss"
+
+import HeaderHeading from "@/assets/images/common/HeaderHeading.astro"
+import Drawer from "@/components/Drawer/Drawer.astro"
+import { getPath, testPath } from "@/utils"
+
+const currentPath = Astro.url.pathname
+const isTopPage = testPath.isTop(currentPath)
+---
+
+<header id="js-header" class={styles.header}>
+  <div class={styles.header__inner}>
+    <a class={styles.header__copy} href={getPath.top}>
+      <span class="sr-only">Connected Japan Awaits You</span>
+      <HeaderHeading className={styles.header__heading} width={411} height={16} />
+    </a>
+    <nav class:list={[styles.header__nav, "u-hideSP", "js-slide-line-nav"]}>
+      <ul class={styles.header__list}>
+        {
+          !isTopPage && (
+            <li class:list={[styles.header__item, "js-nav-slide-item"]}>
+              <a href={getPath.top} class={styles.header__link} data-withicon="true">
+                Back to Top
+              </a>
+            </li>
+          )
+        }
+        <li class:list={[styles.header__item, "js-nav-slide-item"]}>
+          <button
+            type="button"
+            class:list={[styles.header__link, "u-uppercase"]}
+            data-micromodal-trigger="video-modal"
+            aria-label="Open the modal and watch the video">Video</button
+          >
+        </li>
+        <li class:list={[styles.header__item, "js-nav-slide-item"]}>
+          <a href={isTopPage ? "#spot" : "/#spot"} class:list={[styles.header__link, "u-uppercase"]}>Spot</a>
+        </li>
+        <li class:list={[styles.header__item, "js-nav-slide-item"]}>
+          <a href={isTopPage ? "#route" : "/#route"} class:list={[styles.header__link, "u-uppercase"]}>Route</a>
+        </li>
+      </ul>
+    </nav>
+    <div class:list={[styles.header__list, "u-hidePC"]}>
+      <button
+        type="button"
+        class:list={[styles.header__videoTrigger, "u-uppercase"]}
+        data-micromodal-trigger="video-modal"
+        aria-label="Open the modal and watch the video">Video</button
+      >
+      <Drawer />
+    </div>
+  </div>
+</header>

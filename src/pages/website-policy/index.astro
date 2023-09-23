@@ -1,0 +1,16 @@
+---
+import WebsitePolicy from "@/features/WebsitePolicy/WebsitePolicy/WebsitePolicy.astro"
+import AppLayout from "@/layouts/AppLayout/AppLayout.astro"
+import LayoutWithBreadcrumbs from "@/layouts/LayoutWithBreadcrumbs/LayoutWithBreadcrumbs.astro"
+
+const meta = {
+  title: "Website Policy",
+  description: "",
+}
+---
+
+<AppLayout meta={meta} theme={"tokyo"}>
+  <LayoutWithBreadcrumbs page={"websitePolicy"} className={"md:pt-[60px] lg:pt-[64px]"} size={"xl"}>
+    <WebsitePolicy className={"mt-[45px] md:mt-[40px] lg:mt-[66px]"} />
+  </LayoutWithBreadcrumbs>
+</AppLayout>

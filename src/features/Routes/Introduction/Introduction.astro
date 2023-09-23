@@ -1,0 +1,37 @@
+---
+import styles from "./Introduction.module.scss"
+
+import Heading from "@/components/Heading/Heading.astro"
+import LinkPrimary from "@/components/LinkPrimary/LinkPrimary.astro"
+import type { Area, PropsWithClassName } from "@/types"
+import { getPath } from "@/utils"
+
+export type IntroductionProps = PropsWithClassName & {
+  desc: string
+  areas: Area[]
+  dayLength?: number
+}
+
+type Props = IntroductionProps
+
+const { className, desc, areas, dayLength = 3 } = Astro.props
+---
+
+<seciton class:list={[styles.introduction, className]}>
+  <Heading size={"md"} className={"justify-center"}>1-{dayLength} Days Trip Idea</Heading>
+  <p class={styles.introduction__desc}>
+    {desc}
+  </p>
+  <div class={styles.introduction__areas}>
+    {
+      areas.map((area) => (
+        <div class={styles.introduction__linkWrap}>
+          <LinkPrimary className={styles.introduction__link} href={getPath[area].area} theme={area}>
+            <span class="u-uppercase">{area}</span>
+            <span>Details</span>
+          </LinkPrimary>
+        </div>
+      ))
+    }
+  </div>
+</seciton>

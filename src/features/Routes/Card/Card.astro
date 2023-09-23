@@ -1,0 +1,64 @@
+---
+import styles from "./Card.module.scss"
+
+import LinkPrimary from "@/components/LinkPrimary/LinkPrimary.astro"
+import type { Area, PropsWithClassName } from "@/types"
+
+type Props = PropsWithClassName & {
+  label: string
+  title: string
+  href: string
+  area: Area
+  desc: string
+  img: {
+    src: string
+    webp?: string
+    width: number
+    height: number
+    alt: string
+  }
+  linePlacement?: "both" | "top" | "bottom"
+}
+
+const {
+  className,
+  label,
+  title,
+  href,
+  area,
+  desc,
+  img: { src, webp, width, height, alt },
+  linePlacement = "both",
+} = Astro.props
+---
+
+<div class:list={[styles.card, className]}>
+  <div class={styles.card__inner}>
+    <div class={styles.routeLine} data-line-placement={linePlacement}>
+      <span class={styles.routeLine__circle}></span>
+    </div>
+
+    <div class={styles.card__content}>
+      <div class={styles.card__label}>{label}</div>
+      <h3 class={styles.card__title} set:html={title} />
+      <div class={styles.card__contentInner}>
+        <picture class={styles.card__picture}>
+          <source srcset={webp} type="image/webp" />
+          <img
+            class={styles.card__img}
+            src={src}
+            loading="lazy"
+            decoding="async"
+            width={width}
+            height={height}
+            alt={alt}
+          />
+        </picture>
+        <div class={styles.card__body}>
+          <p class={styles.card__desc} set:html={desc} />
+          <LinkPrimary className={styles.card__link} theme={area} href={href}>For Details</LinkPrimary>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

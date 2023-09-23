@@ -1,0 +1,26 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.linkSkip {
+  &:focus {
+    z-index: calc(var(--zindex-header) + 1);
+  }
+}
+
+.appLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.appLayout__main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: $header_height_sp;
+  overflow: hidden;
+
+  @include mq(md) {
+    margin-top: $header_height;
+  }
+}

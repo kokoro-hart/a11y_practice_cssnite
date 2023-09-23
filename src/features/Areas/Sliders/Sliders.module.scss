@@ -1,0 +1,48 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.sliders {
+  width: 100%;
+  padding-bottom: 58px;
+
+  @include mq(md) {
+    padding-top: 74px;
+    padding-bottom: 75px;
+    background-color: $color_white;
+  }
+
+  @include mq(lg) {
+    padding-top: 92px;
+    padding-bottom: 82px;
+  }
+}
+
+.sliders__section {
+  @include mq(md, max) {
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  & + .sliders__section {
+    margin-top: 18px;
+
+    @include mq(md) {
+      margin-top: 32px;
+    }
+
+    @include mq(lg) {
+      margin-top: 56px;
+    }
+  }
+}
+
+.sliders__heading {
+  @include mq(md) {
+    padding-left: 64px;
+  }
+
+  @include mq(lg) {
+    padding-left: 94px;
+  }
+}

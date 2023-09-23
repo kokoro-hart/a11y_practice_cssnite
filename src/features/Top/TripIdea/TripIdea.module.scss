@@ -1,0 +1,251 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.trip__list {
+  display: flex;
+
+  @include mq(sm, max) {
+    flex-direction: column;
+    gap: 4px;
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+  }
+
+  @include mq(sm) {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  @include mq(lg) {
+    gap: 40px;
+  }
+}
+
+[data-inview="true"] {
+  .trip__item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.trip__item {
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.6s $ease_out_quint, transform 0.6s $ease_out_quint;
+  transform: translateY(20px);
+
+  &:nth-of-type(2),
+  &:nth-of-type(3) {
+    transition-delay: 0.05s;
+  }
+
+  &:nth-of-type(4),
+  &:nth-of-type(5) {
+    transition-delay: 0.1s;
+  }
+
+  &:first-child {
+    @include mq(sm, max) {
+      .trip__linkArea {
+        gap: 1px;
+        padding-right: 16px;
+        padding-left: 16px;
+      }
+    }
+    @include mq(sm) {
+      width: 100%;
+
+      .trip__linkArea {
+        aspect-ratio: 650 / 169;
+      }
+
+      .trip__title {
+        font-style: italic;
+        line-height: 1.15;
+        color: $color_white;
+        text-align: center;
+        @include font_secondary;
+
+        @include mq(sm) {
+          @include clamp_mix("font-size", 768, 1280, 24, 34);
+          @include lh(42, 34);
+
+          letter-spacing: 3.965px;
+        }
+      }
+    }
+  }
+
+  &:not(:first-child) {
+    @include mq(sm, max) {
+      .trip__linkArea {
+        gap: 1px;
+        padding-right: 16px;
+        padding-left: 16px;
+      }
+
+      .trip__titleText {
+        @include mq(sm, max) {
+          line-height: 1;
+        }
+      }
+    }
+    @include mq(sm) {
+      width: calc(50% - 32px / 2);
+
+      .trip__linkArea {
+        flex-direction: column;
+        gap: 11px;
+        aspect-ratio: 311 / 169;
+        padding-top: 14px;
+      }
+
+      .trip__title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(3px, 7px);
+
+        &[data-area="saitama"] {
+          width: 88%;
+          transform: translateX(4px);
+        }
+
+        &[data-area="chiba"] {
+          width: 83%;
+        }
+
+        &[data-area="kanagawa"] {
+          width: 89%;
+          transform: translateX(10px);
+        }
+
+        &[data-area="yamanashi"] {
+          width: 89%;
+          transform: translateX(10px);
+        }
+      }
+
+      .trip__titlePicture {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    @include mq(lg) {
+      width: calc(50% - 40px / 2);
+    }
+  }
+}
+
+.trip__linkArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  @include mq(sm) {
+    gap: 12px;
+    align-items: center;
+  }
+
+  @include mq(sm, max) {
+    aspect-ratio: 390 / 81;
+  }
+
+  .trip__picture {
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  @include mq(sm) {
+    @include hover {
+      .trip__link {
+        color: $color_white;
+        background-color: $color_primary_tokyo;
+        border-color: $color_primary_tokyo;
+
+        svg {
+          transform: translateY(1px) translateX(4px);
+
+          path {
+            fill: $color_white;
+          }
+        }
+      }
+
+      .trip__bg {
+        will-change: transform;
+        transform: translate(-50%, -50%) scale(1.03, 1.03);
+      }
+    }
+  }
+}
+
+.trip__title {
+  @include mq(sm, max) {
+    @include fz(20);
+
+    font-style: italic;
+    color: $color_white;
+    letter-spacing: 0.05em;
+    @include font_secondary;
+
+    transform: translate(3px, 7px);
+  }
+}
+
+.trip__picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .trip__bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    transition: transform 0.6s $ease_out_quint;
+    transform: translate(-50%, -50%) scale(1, 1);
+    object-fit: cover;
+  }
+}
+
+.trip {
+  .trip__link {
+    max-width: 90%;
+    @include mq(sm, max) {
+      padding: 0;
+      @include fz(15);
+
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      color: $color_white !important;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      background-color: transparent;
+      border: none !important;
+      transform: translate(2px, 2px);
+
+      svg {
+        path {
+          fill: $color_white !important;
+        }
+      }
+    }
+  }
+}

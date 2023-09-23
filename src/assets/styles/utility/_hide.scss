@@ -1,0 +1,14 @@
+@charset "utf-8";
+@use "../global" as *;
+
+.u-hideSP {
+  @include mq(md, max) {
+    display: none !important;
+  }
+}
+
+.u-hidePC {
+  @include mq(md) {
+    display: none !important;
+  }
+}

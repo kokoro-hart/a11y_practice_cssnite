@@ -1,0 +1,111 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+@mixin hover_button($color) {
+  @include hover {
+    color: $color_white;
+    background-color: $color;
+    border-color: $color;
+
+    .linkPrimary__arrow {
+      transform: translateY(1px) translateX(4px);
+
+      path {
+        fill: $color_white;
+      }
+    }
+  }
+}
+
+.linkPrimary {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 36px;
+  padding: 5px 32px;
+  letter-spacing: 0.75px;
+  word-break: break-word;
+  background-color: $color-white;
+  border-radius: 107.988px;
+  transition: background-color 0.6s $ease_out_quint, color 0.6s $ease_out_quint, border-color 0.6s $ease_out_quint;
+  @include font_secondary;
+  @include fz(15);
+
+  &[data-theme="tokyo"] {
+    color: $color_primary_tokyo;
+    border: 2px solid $color_primary_tokyo;
+
+    .linkPrimary__arrow {
+      path {
+        fill: $color_primary_tokyo;
+      }
+    }
+
+    @include hover_button($color_primary_tokyo);
+  }
+
+  &[data-theme="saitama"] {
+    color: $color_primary_saitama;
+    border: 2px solid $color_primary_saitama;
+
+    .linkPrimary__arrow {
+      path {
+        fill: $color_primary_saitama;
+      }
+    }
+
+    @include hover_button($color_primary_saitama);
+  }
+
+  &[data-theme="chiba"] {
+    color: $color_primary_chiba;
+    border: 2px solid $color_primary_chiba;
+
+    .linkPrimary__arrow {
+      path {
+        fill: $color_primary_chiba;
+      }
+    }
+
+    @include hover_button($color_primary_chiba);
+  }
+
+  &[data-theme="kanagawa"] {
+    color: $color_primary_kanagawa;
+    border: 2px solid $color_primary_kanagawa;
+
+    .linkPrimary__arrow {
+      path {
+        fill: $color_primary_kanagawa;
+      }
+    }
+    @include hover_button($color_primary_kanagawa);
+  }
+
+  &[data-theme="yamanashi"] {
+    color: $color_primary_yamanashi;
+    border: 2px solid $color_primary_yamanashi;
+
+    .linkPrimary__arrow {
+      path {
+        fill: $color_primary_yamanashi;
+      }
+    }
+
+    @include hover_button($color_primary_yamanashi);
+  }
+}
+
+.linkPrimary__arrow {
+  flex-shrink: 0;
+  width: 10px;
+  height: 17px;
+  transition: transform 0.6s $ease_out_quint;
+  transform: translateY(1px);
+
+  path {
+    transition: fill 0.6s $ease_out_quint;
+  }
+}

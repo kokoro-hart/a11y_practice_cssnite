@@ -1,0 +1,38 @@
+---
+import styles from "./Access.module.scss"
+
+import Heading from "@/components/Heading/Heading.astro"
+import type { PropsWithClassName } from "@/types"
+
+export type AccessProps = PropsWithClassName & {
+  text: string
+  image: {
+    src: string
+    width: number
+    height: number
+    alt: string
+  }
+}
+
+type Props = AccessProps
+
+const {
+  text,
+  image: { src, width, height, alt },
+  className,
+} = Astro.props
+---
+
+<section class:list={[styles.access, className]}>
+  <div class={styles.access__inner}>
+    <div class={styles.access__body}>
+      <Heading tag="h2" className={styles.access__heading}>Access</Heading>
+      <p class={styles.access__desc}>
+        {text}
+      </p>
+    </div>
+    <div class={styles.access__imgWrap}>
+      <img src={src} width={width} height={height} alt={alt} loading="lazy" decoding="async" />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+import styles from "./Introduction.module.scss"
+
+import SingleSlider, { SingleSliderProps } from "@/components/Sliders/SingleSlider/SingleSlider.astro"
+
+type Props = {
+  thumbnails: string[]
+  title: string
+  content: string
+}
+
+const { thumbnails, content, title } = Astro.props
+
+const images: SingleSliderProps[] = thumbnails.map((path) => ({
+  common: `/spots/${path}`,
+  width: 800,
+  height: 533,
+  alt: `Photo of the ${title}`,
+}))
+---
+
+<div class={styles.introduction}>
+  <div class={styles.introduction__slider}>
+    <SingleSlider images={images} />
+  </div>
+  <p class={styles.introduction__desc} set:html={content} />
+</div>

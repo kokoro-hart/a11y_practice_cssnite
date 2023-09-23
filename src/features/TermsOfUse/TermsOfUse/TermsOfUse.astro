@@ -1,0 +1,58 @@
+---
+import Section from "../Section/Section.astro"
+
+import styles from "./TermsOfUse.module.scss"
+
+import Heading from "@/components/Heading/Heading.astro"
+import Container from "@/layouts/Container/Container.astro"
+import type { PropsWithClassName } from "@/types"
+
+const contents = [
+  {
+    title: "Rights and Links",
+    contents: [
+      {
+        title: "Copyright (Creative Commons License)",
+        desc: 'Is the copyright of the images and other materials used on this website the same?The copyright of the contents of this website is owned by the Tokyo Convention & Visitors Bureau (hereinafter referred to as "TCVB") and affiliated companies of TCVB, or related parties. Any unauthorized reproduction, reprinting, lending, distributing, selling, or otherwise using the copyrighted materials on this website, whether for profit or non-profit purposes, is strictly prohibited.Translated with DeepL',
+      },
+      {
+        title: "Link",
+        desc: "In principle, you are free to link to this site, regardless of whether it is for profit or not.When posting a link, please send us the contents and URL of the website, the purpose of posting the link, your name, and contact information.The e-mail address of the person to whom the link will be posted is required.However, TCVB reserves the right to refuse the establishment of a link if any of the following applies or is likely to applyThe site contains content that defames or slanders the TCVB, other companies (or persons), or other organizations, or that is intended to cause loss of trust in the TCVB.The content infringes or may infringe on the copyrights, trademarks, other intellectual property rights, property, privacy, portrait rights, or other rights of the TCVB, other companies (or persons), or other organizations.(iii) If the contents of this Web site are displayed within a frame or otherwise make it unclear that the contents are those of TCVB, which may cause misunderstanding by a third party.In addition to the above items, if the contents may violate laws, ordinances, regulations including rules and regulations, or public order and morals, or may interfere with the operation of this website.When links are created using logos, marks, etc. owned by TCVB without permission.When a link is created in such a way as to misidentify the source of the information.Translated with DeepL",
+      },
+    ],
+  },
+  {
+    title: "Legal Matters",
+    contents: [
+      {
+        title: "disclaimer",
+        desc: "No warranty is given as to the completeness or accuracy of the information contained in this site.<br />The information on this site is subject to change without notice.<br />We shall not be liable for any direct or indirect loss arising from the use of the information or content contained in this site.",
+      },
+      {
+        title: "prohibited items<br />The following actions are prohibited when using this site",
+        desc: "Actions that obstruct or interfere with the operation of this site.<br />Actions that cause or may cause annoyance, disadvantage, privacy, or other damage to other users, third parties, or the Company.<br />Actions that are or may be offensive to public order and morals.<br />Actions that violate laws, ordinances, or regulations.<br />Other acts that TCVB deems inappropriate.",
+      },
+      {
+        title: "Governing Law and Court of Jurisdiction",
+        desc: "Unless otherwise provided herein, the use of this Site and the interpretation and application of these Terms of Use shall be governed by and construed in accordance with the laws of Japan.<br />The Tokyo District Court shall have exclusive jurisdiction as the court of first instance over any disputes arising from or in connection with the use of this Site.",
+      },
+    ],
+  },
+]
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<div class:list={[styles.termsOfUse, className]}>
+  <Container size={"xl"}>
+    <Heading tag={"h1"} size={"lg"} className={"max-md:justify-center lg:justify-center"}>Terms of Use</Heading>
+    <p class={styles.termsOfUse__desc}>
+      The Tokyo Convention & Visitors Bureau (hereinafter referred to as "TCVB") grants permission to use the
+      photographic materials provided in the Photographic Data Collection on the condition that the user complies with
+      these Terms of Use.
+    </p>
+    {contents.map((content) => <Section className={"mt-[40px]"} {...content} />)}
+  </Container>
+</div>

@@ -1,0 +1,38 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.spot__heading {
+  @include mq(md) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  @include mq(lg) {
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+}
+
+.spot__linkWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.spot__information {
+  @include mq(lg) {
+    max-width: 801px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.spot__tripIdea {
+  padding-top: 80px;
+  padding-bottom: 79px;
+
+  @include mq(md) {
+    padding-top: 52px;
+    padding-bottom: 48px;
+    background-color: $color_white;
+  }
+}

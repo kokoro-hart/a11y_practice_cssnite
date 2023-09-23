@@ -1,0 +1,78 @@
+---
+import Section from "../Section/Section.astro"
+
+import styles from "./WebsitePolicy.module.scss"
+
+import Heading from "@/components/Heading/Heading.astro"
+import Container from "@/layouts/Container/Container.astro"
+import type { PropsWithClassName } from "@/types"
+
+const contents = [
+  {
+    contents: [
+      {
+        title: "1. Scope",
+        desc: 'This document covers the pages under this site (). (https://visitgreatertokyoarea.org/)"',
+      },
+      {
+        title: "2 . Target achievement level",
+        desc: "Compliance with Level AA",
+      },
+      {
+        title: "3. Additional conformance ",
+        descs: [
+          "levels<br />Of the criteria for achieving Level AA, the following will be included in the target and will be addressed to the extent possible.",
+          '2.1.3: Achievement criteria for keyboards (no exceptions) (AAA)<br />2.2.3: Achievement criteria for timing independence (AAA)<br />2.3.2: Achievement Criteria for Three Shear (Flash) Lights (AAA)"',
+        ],
+      },
+      {
+        title: "4. Exceptions.",
+        descs: [
+          "The following are exempted from the target because of the difficulty of corrective action.",
+          "Content for which there is no data for correction (cannot be corrected)<br />Partial images and videos created in the past<br />Services provided by external parties and accompanying content<br />Content intended for visual effect to convey the world view of this project",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Web Accessibility Verification Results",
+    contents: [
+      {
+        title: "Appendix",
+        desc: 'The notation of the degree of compliance, "compliant" in this specification conforms to the notation defined in the "JIS X 8341-3:2016 Compatibility Notation Guidelines for Web Content - April 2021 Edition" by the Web Accessibility Infrastructure Committee of the Info-communication Access Council.https://waic.jp/docs/jis2016/compliance-guidelines/202104/"',
+      },
+      {
+        title: "List of web content technologies relied upon.",
+        desc: "HTML, CSS, JavaScript, PDF",
+      },
+      {
+        title: "Testing period",
+        desc: "September 0 to September 0, 2023",
+      },
+      {
+        title: "Test results of the criteria for achieving the target conformance level",
+        desc: "aaaaaaaaaaaaaaaaaa",
+      },
+    ],
+  },
+]
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<div class:list={[styles.websitePolicy, className]}>
+  <Container size={"xl"}>
+    <Heading tag={"h1"} size={"lg"} className={"max-md:justify-center lg:justify-center"}>
+      Web Accessibility Policy
+    </Heading>
+    <p class={styles.websitePolicy__desc}>
+      This website is designed to conform to JIS X 8341-3, "Guidelines for older persons and persons with disabilities -
+      Information and communications equipment, software and services - Part 3: Web content" ("JIS X 8341-3"), a
+      Japanese Industrial Standard. The goal is to comply with conformance level AA of the "Guidelines for Designing for
+      the Elderly and Persons with Disabilities.
+    </p>
+    {contents.map((content) => <Section className={"mt-[40px]"} {...content} />)}
+  </Container>
+</div>

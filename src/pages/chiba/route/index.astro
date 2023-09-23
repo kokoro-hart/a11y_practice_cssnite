@@ -1,0 +1,16 @@
+---
+import Chiba from "@/features/Routes/Chiba.astro"
+import AppLayout from "@/layouts/AppLayout/AppLayout.astro"
+import LayoutWithBreadcrumbs from "@/layouts/LayoutWithBreadcrumbs/LayoutWithBreadcrumbs.astro"
+
+const meta = {
+  title: "TOKYO & CHIBA",
+  description: "",
+}
+---
+
+<AppLayout meta={meta} theme={"chiba"}>
+  <LayoutWithBreadcrumbs page={"routePage"} area={"chiba"} className={"md:pt-[60px] lg:pt-[64px]"} size={"xl"}>
+    <Chiba />
+  </LayoutWithBreadcrumbs>
+</AppLayout>

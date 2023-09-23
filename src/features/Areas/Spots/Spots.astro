@@ -1,0 +1,23 @@
+---
+import styles from "./Spots.module.scss"
+
+import IconSpot from "@/assets/images/icons/IconSpot.astro"
+import Heading from "@/components/Heading/Heading.astro"
+import type { CardProps } from "@/features/Spots/Card/Card.astro"
+import FeatureSpots from "@/features/Spots/Spots.astro"
+import type { PropsWithClassName } from "@/types"
+
+export type SpotsProps = PropsWithClassName & {
+  cards: CardProps[]
+  categories: string[]
+}
+
+type Props = SpotsProps
+
+const { className, cards, categories } = Astro.props
+---
+
+<section class:list={[styles.spots, className]}>
+  <Heading className={"justify-center"}><IconSpot />Spot</Heading>
+  <FeatureSpots className={"mt-[22px] md:mt-[7px] lg:mt-[34px]"} cards={cards} categories={categories} perPage={6} />
+</section>

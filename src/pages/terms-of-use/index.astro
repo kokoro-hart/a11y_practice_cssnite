@@ -1,0 +1,16 @@
+---
+import TermsOfUse from "@/features/TermsOfUse/TermsOfUse/TermsOfUse.astro"
+import AppLayout from "@/layouts/AppLayout/AppLayout.astro"
+import LayoutWithBreadcrumbs from "@/layouts/LayoutWithBreadcrumbs/LayoutWithBreadcrumbs.astro"
+
+const meta = {
+  title: "Terms of Use",
+  description: "",
+}
+---
+
+<AppLayout meta={meta} theme={"tokyo"}>
+  <LayoutWithBreadcrumbs page={"termsOfUse"} className={"md:pt-[60px] lg:pt-[64px]"} size={"xl"}>
+    <TermsOfUse className={"mt-[45px] md:mt-[40px] lg:mt-[66px]"} />
+  </LayoutWithBreadcrumbs>
+</AppLayout>

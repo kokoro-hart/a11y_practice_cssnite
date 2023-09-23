@@ -1,0 +1,15 @@
+---
+import styles from "./Heading.module.scss"
+
+import type { PropsWithClassName } from "@/types"
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<h2 class:list={[styles.heading, className]}>
+  <span class={styles.heading__text}>
+    <slot />
+  </span>
+</h2>

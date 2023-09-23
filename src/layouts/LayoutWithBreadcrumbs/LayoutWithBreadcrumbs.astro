@@ -1,0 +1,23 @@
+---
+import styles from "./LayoutWithBreadcrumbs.module.scss"
+
+import Breadcrumbs, { BreadcrumbsProps } from "@/components/Breadcrumbs/Breadcrumbs.astro"
+import Container from "@/layouts/Container/Container.astro"
+import type { PropsWithClassName } from "@/types"
+
+type Props = BreadcrumbsProps &
+  PropsWithClassName & {
+    size?: "sm" | "md" | "lg" | "xl"
+  }
+
+const { className, size, ...breadcrumbsProps } = Astro.props
+---
+
+<div class={styles.withBreadcrumbs}>
+  <Container className={className} size={size}>
+    <div class={styles.withBreadcrumbs__breadcrumbs}>
+      <Breadcrumbs {...breadcrumbsProps} />
+    </div>
+  </Container>
+  <slot />
+</div>

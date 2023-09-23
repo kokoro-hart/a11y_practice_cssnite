@@ -1,0 +1,75 @@
+---
+import styles from "./SingleSlider.module.scss"
+
+import IconArrowLeft from "@/assets/images/icons/IconArrowLeft.astro"
+import IconArrowRight from "@/assets/images/icons/IconArrowRight.astro"
+import IconPause from "@/assets/images/icons/IconPauseStroke.astro"
+import IconPlay from "@/assets/images/icons/IconPlay.astro"
+
+export type SingleSliderProps = {
+  common: string
+  webp?: string
+  width: number
+  height: number
+  alt: string
+}
+
+type Props = {
+  images: SingleSliderProps[]
+}
+
+const { images } = Astro.props
+---
+
+<div class={styles.singleSlider}>
+  <div class:list={[styles.singleSlider__slider, "swiper", "js-single-slider"]}>
+    <div class:list={[styles.singleSlider__wrapper, "swiper-wrapper"]}>
+      {
+        images.map(({ common, webp, width, height, alt }) => (
+          <div class:list={[styles.singleSlider__slide, "swiper-slide"]}>
+            <picture class={styles.singleSlider__picture}>
+              {webp && <source srcset={webp} type="image/webp" />}
+              <img
+                src={common}
+                width={width}
+                height={height}
+                loading="lazy"
+                decoding="async"
+                alt={alt}
+                class={styles.singleSlider__img}
+              />
+            </picture>
+          </div>
+        ))
+      }
+    </div>
+    <div class={styles.singleSlider__footer}>
+      <div class:list={styles.singleSlider__footerLeft}>
+        <button type="button" class:list={[styles.singleSlider__prev, "js-single-slider-prev", "swiper-button-prev"]}>
+          <IconArrowLeft className={styles.singleSlider__arrowLeft} width={10} height={15} color={"#000"} />
+        </button>
+        <button type="button" class:list={[styles.singleSlider__next, "js-single-slider-next", "swiper-button-next"]}>
+          <IconArrowRight className={styles.singleSlider__arrowRight} width={10} height={15} color={"#000"} />
+        </button>
+      </div>
+      <div class={styles.singleSlider__footerRight}>
+        <button
+          type="button"
+          class:list={[styles.singleSlider__button, "js-single-slider-play"]}
+          aria-label="Pause the automatic playback of the carousel"
+          data-play="true"
+        >
+          <IconPause className={styles.singleSlider__pause} />
+          <IconPlay className={styles.singleSlider__play} />
+        </button>
+        <div class:list={[styles.singleSlider__pagination, "js-single-slider-pagination", "swiper-pagination"]}></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import { singleSlider } from "@/assets/scripts/slider"
+
+  singleSlider()
+</script>

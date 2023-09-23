@@ -1,0 +1,29 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.introduction__inner {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+
+  @include mq(md) {
+    flex-direction: column;
+    gap: 43px;
+  }
+}
+
+.introduction__text {
+  @include fz(14);
+  @include lh(21, 14);
+
+  @include mq(md) {
+    @include lh(23.8, 14);
+  }
+
+  @include mq(lg) {
+    @include fz(16);
+    @include lh(27.2, 16);
+
+    letter-spacing: 0.05em;
+  }
+}

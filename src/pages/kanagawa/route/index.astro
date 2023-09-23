@@ -1,0 +1,16 @@
+---
+import Kanagawa from "@/features/Routes/Kanagawa.astro"
+import AppLayout from "@/layouts/AppLayout/AppLayout.astro"
+import LayoutWithBreadcrumbs from "@/layouts/LayoutWithBreadcrumbs/LayoutWithBreadcrumbs.astro"
+
+const meta = {
+  title: "TOKYO & KANAGAWA",
+  description: "",
+}
+---
+
+<AppLayout meta={meta} theme={"kanagawa"}>
+  <LayoutWithBreadcrumbs page={"routePage"} area={"kanagawa"} className={"md:pt-[60px] lg:pt-[64px]"} size={"xl"}>
+    <Kanagawa />
+  </LayoutWithBreadcrumbs>
+</AppLayout>

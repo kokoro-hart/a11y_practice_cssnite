@@ -1,0 +1,88 @@
+---
+import styles from "./Breadcrumbs.module.scss"
+
+import type { Area } from "@/types"
+import { getPath, toUpperCamelCase } from "@/utils"
+
+type PageType = keyof typeof breadcrumbs
+
+export type BreadcrumbsProps = {
+  page: PageType
+  area?: Area
+  spotIndex?: number
+}
+
+type Props = BreadcrumbsProps
+
+const { page, area, spotIndex } = Astro.props
+
+const pages = {
+  TOP: {
+    name: "Top",
+    path: getPath.top,
+  },
+  AREA: {
+    name: toUpperCamelCase(area ?? "Area"),
+    path: getPath[area ?? "tokyo"].area,
+  },
+  ROUTE: {
+    name: "Route",
+    path: getPath[area ?? "tokyo"].route,
+  },
+  SPOT: {
+    name: `spot${spotIndex}~~~~~~~`,
+    path: getPath.spot(area ?? "tokyo", spotIndex ?? 1),
+  },
+  SITEMAP: {
+    name: "Website Map",
+    path: getPath.websiteMap,
+  },
+  WEBSITEPOLICY: {
+    name: "Website Policy",
+    path: getPath.websitePolicy,
+  },
+  PRIVACYPOLICY: {
+    name: "Privacy Policy",
+    path: getPath.privacyPolicy,
+  },
+  TERMSOFUSE: {
+    name: "Terms of Use",
+    path: getPath.termsOfUse,
+  },
+  NOTFOUND: {
+    name: "404 Not Found",
+    path: "/404.html",
+  },
+}
+
+const { TOP, AREA, ROUTE, SPOT, SITEMAP, WEBSITEPOLICY, PRIVACYPOLICY, TERMSOFUSE, NOTFOUND } = pages
+
+const breadcrumbs = {
+  areaPage: [TOP, AREA],
+  routePage: [TOP, AREA, ROUTE],
+  spotPage: [TOP, AREA, ROUTE, SPOT],
+  websiteMap: [TOP, SITEMAP],
+  websitePolicy: [TOP, WEBSITEPOLICY],
+  privacyPolicy: [TOP, PRIVACYPOLICY],
+  notFound: [TOP, NOTFOUND],
+  termsOfUse: [TOP, TERMSOFUSE],
+}
+---
+
+<div class={styles.breadcrumbs}>
+  <ul class={styles.breadcrumbs__list}>
+    {
+      breadcrumbs[page].map(({ name, path }, index) => (
+        <li class={styles.breadcrumbs__item}>
+          {index === breadcrumbs[page].length - 1 ? (
+            <p class:list={[styles.breadcrumbs__text, page === "spotPage" && "js-breadcrumbs-text"]}>{name}</p>
+          ) : (
+            <a href={path} class:list={[styles.breadcrumbs__link, "u-uppercase"]}>
+              {name}
+            </a>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</div>

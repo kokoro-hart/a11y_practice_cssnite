@@ -1,0 +1,32 @@
+---
+import styles from "./NotFound.module.scss"
+
+import pageTop from "@/assets/images/icons/page_top.svg"
+import type { PropsWithClassName } from "@/types"
+import { getPath } from "@/utils"
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<div class:list={[styles.notFound, className]}>
+  <h1 class={styles.notFound__heading}>
+    <span>404</span>Not Found
+  </h1>
+  <p class={styles.notFound__text}>Sorry, the page you accessed could not</p>
+  <a href={getPath.top} class={styles.notFound__link}>
+    <span class={styles.notFound__linkInner}>
+      <img
+        src={pageTop.src}
+        width={pageTop.width}
+        height={pageTop.height}
+        alt=""
+        decoding="async"
+        loading="lazy"
+        aria-hidden="true"
+      />
+      Back to Top
+    </span>
+  </a>
+</div>

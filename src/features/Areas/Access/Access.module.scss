@@ -1,0 +1,78 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+$gap: 31px;
+
+.access__heading {
+  @include mq(md, max) {
+    justify-content: center;
+  }
+}
+
+.access__inner {
+  @include mq(lg) {
+    display: flex;
+    gap: $gap;
+    align-items: center;
+  }
+}
+
+.access__body {
+  @include mq(lg) {
+    width: calc(65% - $gap / 2);
+  }
+}
+
+.access__desc {
+  margin-top: 24px;
+  @include fz(14);
+  @include lh(21, 14);
+
+  @include mq(md) {
+    @include lh(23.8, 14);
+  }
+
+  @include mq(lg) {
+    margin-top: 8px;
+    @include fz(16);
+    @include lh(27.2, 16);
+
+    letter-spacing: 0.05em;
+  }
+}
+
+.access__imgWrap {
+  width: 100%;
+
+  @include mq(md, max) {
+    max-width: 510px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include mq(md) {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @include mq(lg, max) {
+    margin-top: 24px;
+  }
+
+  @include mq(lg) {
+    width: calc(50% - $gap / 2);
+    transform: scale(1.1) translateX(15px);
+  }
+
+  @include mq(xl) {
+    transform: scale(1.37) translateX(57px);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+}

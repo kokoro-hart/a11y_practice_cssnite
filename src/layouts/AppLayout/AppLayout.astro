@@ -1,0 +1,61 @@
+---
+import Document, { DocumentProps } from "../Document.astro"
+import Footer from "../Footer/Footer.astro"
+import Header from "../Header/Header.astro"
+
+import styles from "./AppLayout.module.scss"
+
+import VideoModal from "@/components/VideoModal/VideoModal.astro"
+import type { Area } from "@/types"
+
+type Props = DocumentProps & {
+  theme: Area
+}
+const { theme, ...props } = Astro.props
+---
+
+<Document {...props}>
+  <a href="#start-of-content" class:list={[styles.linkSkip, "sr-only"]}>Skip to main contents</a>
+  <div id="app" class={styles.appLayout}>
+    <Header />
+    <main id="start-of-content" class={styles.appLayout__main}>
+      <slot />
+    </main>
+    <Footer />
+  </div>
+  <VideoModal id={"video-modal"} />
+  {
+    {
+      ["tokyo"]:
+        <style>
+          :root {
+            --color-primary: #2f8d2f;
+          }
+        </style>,
+      ["saitama"]:
+        <style>
+          :root {
+            --color-primary: #ce3434;
+          }
+        </style>,
+      ["chiba"]:
+        <style>
+          :root {
+            --color-primary: #1a62c7;
+          }
+        </style>,
+      ["kanagawa"]:
+        <style>
+          :root {
+            --color-primary: #f54545;
+          }
+        </style>,
+      ["yamanashi"]:
+        <style>
+          :root {
+            --color-primary: #95268a;
+          }
+        </style>,
+    }[theme]
+  }
+</Document>

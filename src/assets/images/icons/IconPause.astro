@@ -1,0 +1,16 @@
+---
+import type { PropsWithClassName } from "@/types"
+
+type Props = PropsWithClassName & {
+  width?: number
+  height?: number
+}
+
+const { className, width = 32, height = 32 } = Astro.props
+---
+
+<svg class={className} width={width} height={height} viewBox="0 0 32 32" fill="none">
+  <circle cx="16" cy="16" r="16" fill="white"></circle>
+  <rect x="11.1309" y="9.73914" width="3.58767" height="13.0053" fill="black"></rect>
+  <rect x="17.8574" y="9.73914" width="3.58767" height="13.0053" fill="black"></rect>
+</svg>

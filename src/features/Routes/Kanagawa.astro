@@ -1,0 +1,596 @@
+---
+import Access from "./Access/Access.astro"
+import Card from "./Card/Card.astro"
+import { DAY_HEADING_STYLE, RETURN_DAY_STYLE } from "./consts"
+import Heading from "./Heading/Heading.astro"
+import Instructions from "./Instructions/Instructions.astro"
+import Introduction, { IntroductionProps } from "./Introduction/Introduction.astro"
+import MainVisual from "./MainVisual/MainVisual.astro"
+import TabWithSlider from "./TabWithSlider/TabWithSlider.astro"
+
+import bgJpg from "@/assets/images/route/kanagawa/route_box_kanagawa_pc.jpg"
+import bgWebp from "@/assets/images/route/kanagawa/route_box_kanagawa_pc.webp"
+import bgJpgSp from "@/assets/images/route/kanagawa/route_box_kanagawa_sp.jpg"
+import bgWebpSp from "@/assets/images/route/kanagawa/route_box_kanagawa_sp.webp"
+import cardJpg01 from "@/assets/images/route/saitama/route_thumbnail_01.jpg"
+import cardWebp01 from "@/assets/images/route/saitama/route_thumbnail_01.webp"
+import cardJpg02 from "@/assets/images/route/saitama/route_thumbnail_02.jpg"
+import cardWebp02 from "@/assets/images/route/saitama/route_thumbnail_02.webp"
+import cardJpg03 from "@/assets/images/route/saitama/route_thumbnail_03.jpg"
+import cardWebp03 from "@/assets/images/route/saitama/route_thumbnail_03.webp"
+import cardJpg04 from "@/assets/images/route/saitama/route_thumbnail_04.jpg"
+import cardWebp04 from "@/assets/images/route/saitama/route_thumbnail_04.webp"
+import cardJpg05 from "@/assets/images/route/saitama/route_thumbnail_05.jpg"
+import cardWebp05 from "@/assets/images/route/saitama/route_thumbnail_05.webp"
+import cardJpg06 from "@/assets/images/route/saitama/route_thumbnail_06.jpg"
+import cardWebp06 from "@/assets/images/route/saitama/route_thumbnail_06.webp"
+import Sliders from "@/features/Areas/Sliders/Sliders.astro"
+import Container from "@/layouts/Container/Container.astro"
+import type { Area } from "@/types"
+import { getPath } from "@/utils"
+
+const AREAS: Area[] = ["tokyo", "kanagawa"]
+
+const TABPANEL_NAME = "kanagawaRoutePanel"
+
+const TOTAL_DAYS = 3
+
+const mainVisual = {
+  titles: AREAS,
+  bg: {
+    common: bgJpg.src,
+    webp: bgWebp.src,
+    width: bgJpg.width,
+    height: bgJpg.height,
+    commonSp: bgJpgSp.src,
+    webpSp: bgWebpSp.src,
+    widthSp: bgJpgSp.width,
+    heightSp: bgJpgSp.height,
+    alt: "Tokyo Scramble Crossing and Kanagawa Sightseeing Spots",
+  },
+}
+
+const introduction: IntroductionProps = {
+  desc: "Saitama and saitama are located very close to each other. In fact, Saitama is a prefecture that borders saitama and is considered part of the Greater saitama Area. Depending on the specific location in Saitama and saitama, the distance between the two can range from just a few kilometers to around 50 kilometers. Additionally, there are many transportation options such as trains, buses, and highways that connect the two prefectures, making it easy and convenient to travel between them.",
+  areas: AREAS,
+}
+---
+
+<div>
+  <MainVisual {...mainVisual} className={"md:mt-[31px] lg:mt-[52px]"} />
+  <Container size={"xl"} className={"mt-[40px] md:mt-[24px] lg:mt-[64px]"}>
+    <Introduction {...introduction} className={"max-w-4xl"} />
+  </Container>
+  <Container size={"xl"} className={"max-w-[1180px] px-[17px] md:px-[64px]"}>
+    <TabWithSlider className={"mt-[79px] lg:mt-[114px]"} panelName={TABPANEL_NAME} tabLength={TOTAL_DAYS}>
+      <div id={`${TABPANEL_NAME}1`} role="tabpanel" aria-hidden={"false"}>
+        <Access
+          linePlacement={"bottom"}
+          methods={[
+            {
+              type: "airplane",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          linePlacement={"top"}
+          label={"00"}
+          title={"【Accomodation】 <br /> Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg06.src,
+            webp: cardWebp06.src,
+            width: cardJpg06.width,
+            height: cardJpg06.height,
+            alt: "Open-air bath surrounded by wooden fences and autumn leaves",
+          }}
+        />
+
+        <div class={DAY_HEADING_STYLE}>
+          <Heading className={"u-uppercase"}>Day1</Heading>
+        </div>
+
+        <Card
+          linePlacement={"bottom"}
+          label={"01"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg01.src,
+            webp: cardWebp01.src,
+            width: cardJpg01.width,
+            height: cardJpg01.height,
+            alt: "Man cycling in nature",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"02"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg02.src,
+            webp: cardWebp02.src,
+            width: cardJpg02.width,
+            height: cardJpg02.height,
+            alt: "Street lined with countless gingko trees",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"03"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg03.src,
+            webp: cardWebp03.src,
+            width: cardJpg03.width,
+            height: cardJpg03.height,
+            alt: "Sushi chefs processing fish and spectators watching",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"04"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg04.src,
+            webp: cardWebp04.src,
+            width: cardJpg04.width,
+            height: cardJpg04.height,
+            alt: "A busy downtown area with many people",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"05"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg05.src,
+            webp: cardWebp05.src,
+            width: cardJpg05.width,
+            height: cardJpg05.height,
+            alt: "Entertainment food hall in Shinjuku Kabukicho with gorgeous interior",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"06"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg06.src,
+            webp: cardWebp06.src,
+            width: cardJpg06.width,
+            height: cardJpg06.height,
+            alt: "Open-air bath surrounded by wooden fences and autumn leaves",
+          }}
+        />
+        <Access
+          linePlacement={"top"}
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+      </div>
+
+      <div id={`${TABPANEL_NAME}2`} role="tabpanel" aria-hidden={"true"}>
+        <Card
+          linePlacement={"bottom"}
+          label={"07"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg01.src,
+            webp: cardWebp01.src,
+            width: cardJpg01.width,
+            height: cardJpg01.height,
+            alt: "Man cycling in nature",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"08"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg02.src,
+            webp: cardWebp02.src,
+            width: cardJpg02.width,
+            height: cardJpg02.height,
+            alt: "Street lined with countless gingko trees",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"09"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg03.src,
+            webp: cardWebp03.src,
+            width: cardJpg03.width,
+            height: cardJpg03.height,
+            alt: "Sushi chefs processing fish and spectators watching",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"10"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg04.src,
+            webp: cardWebp04.src,
+            width: cardJpg04.width,
+            height: cardJpg04.height,
+            alt: "A busy downtown area with many people",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"11"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg05.src,
+            webp: cardWebp05.src,
+            width: cardJpg05.width,
+            height: cardJpg05.height,
+            alt: "Entertainment food hall in Shinjuku Kabukicho with gorgeous interior",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"12"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg06.src,
+            webp: cardWebp06.src,
+            width: cardJpg06.width,
+            height: cardJpg06.height,
+            alt: "Open-air bath surrounded by wooden fences and autumn leaves",
+          }}
+        />
+        <Access
+          linePlacement={"top"}
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+      </div>
+
+      <div id={`${TABPANEL_NAME}3`} role="tabpanel" aria-hidden={"true"}>
+        <Card
+          linePlacement={"bottom"}
+          label={"13"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg01.src,
+            webp: cardWebp01.src,
+            width: cardJpg01.width,
+            height: cardJpg01.height,
+            alt: "Man cycling in nature",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"14"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg02.src,
+            webp: cardWebp02.src,
+            width: cardJpg02.width,
+            height: cardJpg02.height,
+            alt: "Street lined with countless gingko trees",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"15"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg03.src,
+            webp: cardWebp03.src,
+            width: cardJpg03.width,
+            height: cardJpg03.height,
+            alt: "Sushi chefs processing fish and spectators watching",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"16"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg04.src,
+            webp: cardWebp04.src,
+            width: cardJpg04.width,
+            height: cardJpg04.height,
+            alt: "A busy downtown area with many people",
+          }}
+        />
+        <Access
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"17"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          linePlacement={"top"}
+          img={{
+            src: cardJpg05.src,
+            webp: cardWebp05.src,
+            width: cardJpg05.width,
+            height: cardJpg05.height,
+            alt: "Entertainment food hall in Shinjuku Kabukicho with gorgeous interior",
+          }}
+        />
+        <div class={RETURN_DAY_STYLE}>
+          <Heading className={"u-uppercase"}>Return day</Heading>
+        </div>
+        <Access
+          linePlacement={"bottom"}
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+        <Card
+          label={"00"}
+          title={"【Accomodation】Onsen Ryokan Yuen Bettei Daita"}
+          desc={'First, you will visit Mt. Takao, a notable spiritual and cultural spot in Tokyo. Mt. Takao is a sacred <br>mountain that has been worshipped since the Edo period and which is dotted with power spots related to Shugendo (mountain worship), a fusion of <br>Buddhism and Shinto. The "Takao-san Yakuo-in" temple is a must-visit stop, with its principle idols of the legendary Tengu creatures from Japanese folklore. Surrounded by seasonal plants, here you can enjoy both true mountaineering and easy hiking. If the weather is nice, then you can also see Mt. Fuji from the peak, and every winter solstice the so-called "Diamond Fuji" phenomenon, when the sun sets just above Mt. Fuji, can seen.'}
+          area={"kanagawa"}
+          href={getPath.spot("kanagawa", 1)}
+          img={{
+            src: cardJpg06.src,
+            webp: cardWebp06.src,
+            width: cardJpg06.width,
+            height: cardJpg06.height,
+            alt: "Open-air bath surrounded by wooden fences and autumn leaves",
+          }}
+        />
+        <Access
+          linePlacement={"top"}
+          methods={[
+            {
+              type: "train",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+            {
+              type: "walk",
+              desc: "Tokyo Station to xxxxxxx - 1 hr and 30 mins",
+            },
+          ]}
+        />
+      </div>
+    </TabWithSlider>
+
+    <Instructions className={"mt-[38px] md:mt-[24px] lg:mt-[59px]"}>
+      *The information provided here is as of June 2023. <br />
+      *Transportation information does not include the number of transfers or transfer time. <br />
+      *Admission fees may be charged depending on the spot/facility. For the latest information on business hours, days when
+      spots/facilities are regularly closed, and prices, etc., please check the website for each spot/facility.
+    </Instructions>
+  </Container>
+  <Sliders className={"mt-[80px] md:mt-[88px] lg:mt-[126px]"} />
+</div>

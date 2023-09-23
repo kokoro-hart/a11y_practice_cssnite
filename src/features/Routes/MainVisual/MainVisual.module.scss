@@ -1,0 +1,102 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.mainVisual {
+  @include original_content_width(1000px, 60px, 0);
+}
+
+.mainVisual__inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #e8e8eb;
+
+  @include mq(md, max) {
+    aspect-ratio: 390 / 176;
+  }
+
+  @include mq(md) {
+    min-height: 180px;
+  }
+
+  @include mq(lg) {
+    min-height: 278px;
+  }
+}
+
+.mainVisual__bg {
+  width: 100%;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.mainVisual__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-style: italic;
+  color: $color_white;
+  text-align: center;
+  letter-spacing: 0.115em;
+  transform: translate(-50%, -50%);
+  @include clamp_mix("font-size", 392, 767, 32, 48);
+  @include lh(39, 32);
+  @include font_secondary;
+
+  @include mq(md) {
+    letter-spacing: 0.05em;
+    @include fz(32);
+    @include lh(39, 32);
+  }
+
+  @include mq(lg) {
+    letter-spacing: -0.005em;
+    @include fz(50);
+    @include lh(60.95, 50);
+  }
+}
+
+.mainVisual__titles {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  @include mq(md, max) {
+    flex-direction: column;
+    @include clamp_mix("gap", 392, 767, 37, 80);
+  }
+}
+
+.mainVisual__titlesText {
+  font-style: italic;
+  color: $color_white;
+  letter-spacing: 0.05em;
+  @include clamp_mix("font-size", 392, 767, 32, 48);
+  @include lh(39, 32);
+  @include font_secondary;
+
+  @include mq(md) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    @include clamp_mix("font-size", 768, 1580, 32, 50);
+    @include lh(39, 32);
+  }
+}

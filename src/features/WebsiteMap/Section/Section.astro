@@ -1,0 +1,18 @@
+---
+import styles from "./Section.module.scss"
+
+import Heading from "@/components/Heading/Heading.astro"
+import type { PropsWithClassName } from "@/types"
+
+type Props = PropsWithClassName & {
+  title: string
+}
+const { className, title } = Astro.props
+---
+
+<section class:list={[styles.section, className]}>
+  <Heading size="xs">{title}</Heading>
+  <div class={styles.section__inner}>
+    <slot />
+  </div>
+</section>

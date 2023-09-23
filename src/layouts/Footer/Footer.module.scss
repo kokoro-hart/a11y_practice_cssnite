@@ -1,0 +1,182 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.footer {
+  z-index: calc(var(--zindex-header) - 1);
+  color: $color_white;
+  background-color: $color_black;
+}
+
+.footer__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  padding: 35px 20px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include mq(md) {
+    gap: 10px;
+    padding: 69px 20px 68px;
+  }
+
+  @include mq(lg) {
+    gap: 14px;
+    padding: 61px 20px 68px;
+  }
+}
+
+.footer__nav {
+  gap: 24px;
+
+  @include mq(md) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 54px;
+    align-items: center;
+  }
+
+  @include mq(md, max) {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+    column-gap: 9px;
+  }
+}
+
+.footer__navItem {
+  &:last-child {
+    @include mq(md, max) {
+      padding-left: 12px;
+    }
+  }
+}
+
+.footer__navLink {
+  @include fz(12);
+
+  padding: 5px 0 10px;
+  text-decoration: underline;
+  letter-spacing: 0.6px;
+
+  @include hover_opacity(0.7);
+
+  @include mq(md) {
+    @include fz(14);
+  }
+}
+
+.footer__assets {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+  margin-top: 40px;
+
+  @include mq(md) {
+    margin-top: 16px;
+  }
+
+  @include mq(lg) {
+    margin-top: 32px;
+  }
+
+  .footer__logo {
+    @include mq(md, max) {
+      width: 87.794px;
+      height: 27.287px;
+    }
+  }
+
+  .footer__text {
+    @include mq(md, max) {
+      width: 178.051px;
+      height: 9.583px;
+    }
+  }
+}
+
+.footer__info {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: 10px;
+
+  @include mq(md, max) {
+    flex-direction: column;
+    gap: 7px;
+  }
+}
+
+.footer__copyright {
+  small {
+    @include fz(12);
+
+    white-space: nowrap;
+  }
+}
+
+.footer__updatedAt {
+  @include fz(12);
+}
+
+.footer__scrollTop {
+  position: absolute;
+  top: -9px;
+  right: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 81px;
+  height: 81px;
+  padding-top: 12px;
+  overflow: hidden;
+  color: $color_white;
+  background-color: $color_primary_tokyo;
+  border-radius: 50%;
+  transition: filter 0.6s $ease_out_quint;
+  transform: translateY(-100%);
+  @include fz(12);
+  @include font_secondary;
+
+  &::before {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    content: "";
+    border-top: solid 2px $color_white;
+    border-right: solid 2px $color_white;
+    transition: transform 0.3s $ease_out_quint;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+
+  @include hover {
+    &::before {
+      transform: translate(-50%, -3px) rotate(-45deg);
+    }
+  }
+
+  @include mq(md) {
+    top: -2px;
+    right: 75px;
+    width: 79px;
+    height: 80px;
+    transform: translateY(-50%);
+  }
+
+  @include mq(lg) {
+    top: 4px;
+    right: 69px;
+  }
+
+  @keyframes shine {
+    100% {
+      left: 125%;
+    }
+  }
+}

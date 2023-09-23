@@ -1,0 +1,251 @@
+---
+import styles from "./TripIdea.module.scss"
+
+import tokyoAllJpg from "@/assets/images/top/trip_all.jpg"
+import tokyoAllWebp from "@/assets/images/top/trip_all.webp"
+import chibaJpg from "@/assets/images/top/trip_chiba.jpg"
+import chibaWebp from "@/assets/images/top/trip_chiba.webp"
+import chibaJpgSp from "@/assets/images/top/trip_chiba_sp.jpg"
+import chibaWebpSp from "@/assets/images/top/trip_chiba_sp.webp"
+import chibaJpgTab from "@/assets/images/top/trip_chiba_tab.jpg"
+import chibaWebpTab from "@/assets/images/top/trip_chiba_tab.webp"
+import kanagawaJpg from "@/assets/images/top/trip_kanagawa.jpg"
+import kanagawaWebp from "@/assets/images/top/trip_kanagawa.webp"
+import kanagawaJpgSp from "@/assets/images/top/trip_kanagawa_sp.jpg"
+import kanagawaWebpSp from "@/assets/images/top/trip_kanagawa_sp.webp"
+import kanagawaJpgTab from "@/assets/images/top/trip_kanagawa_tab.jpg"
+import kanagawaWebpTab from "@/assets/images/top/trip_kanagawa_tab.webp"
+import saitamaJpg from "@/assets/images/top/trip_saitama.jpg"
+import saitamaWebp from "@/assets/images/top/trip_saitama.webp"
+import saitamaJpgSp from "@/assets/images/top/trip_saitama_sp.jpg"
+import saitamaWebpSp from "@/assets/images/top/trip_saitama_sp.webp"
+import saitamaJpgTab from "@/assets/images/top/trip_saitama_tab.jpg"
+import saitamaWebpTab from "@/assets/images/top/trip_saitama_tab.webp"
+import tripTextChibaPc from "@/assets/images/top/trip_text_chiba_pc.svg"
+import tripTextKanagawaPc from "@/assets/images/top/trip_text_kanagawa_pc.svg"
+import tripTextSaitamaPc from "@/assets/images/top/trip_text_saitama_pc.svg"
+import tripTextYamanashiPc from "@/assets/images/top/trip_text_yamanashi_pc.svg"
+import tokyoJpgSp from "@/assets/images/top/trip_tokyo_sp.jpg"
+import tokyoWebpSp from "@/assets/images/top/trip_tokyo_sp.webp"
+import yamanasiJpgTab from "@/assets/images/top/trip_yamanashi_tab.jpg"
+import yamanasiWebpTab from "@/assets/images/top/trip_yamanashi_tab.webp"
+import yamanasiJpg from "@/assets/images/top/trip_yamanasi.jpg"
+import yamanasiWebp from "@/assets/images/top/trip_yamanasi.webp"
+import yamanasiJpgSp from "@/assets/images/top/trip_yamanasi_sp.jpg"
+import yamanasiWebpSp from "@/assets/images/top/trip_yamanasi_sp.webp"
+import LinkPrimary from "@/components/LinkPrimary/LinkPrimary.astro"
+import type { PropsWithClassName } from "@/types"
+import { getPath } from "@/utils"
+
+const trips = [
+  {
+    title: {
+      text: "Saitama",
+      srcPc: tripTextSaitamaPc.src,
+      widthPc: tripTextSaitamaPc.width,
+      heightPc: tripTextSaitamaPc.height,
+    },
+    href: getPath.saitama.route,
+    bgs: {
+      commonPc: saitamaJpg.src,
+      webpPc: saitamaWebp.src,
+      widthPc: saitamaJpg.width,
+      heightPc: saitamaJpg.height,
+      commonSp: saitamaJpgSp.src,
+      webpSp: saitamaWebpSp.src,
+      widthSp: saitamaJpgSp.width,
+      heightSp: saitamaJpgSp.height,
+      commonTab: saitamaJpgTab.src,
+      webpTab: saitamaWebpTab.src,
+      widthTab: saitamaJpgTab.width,
+      heightTab: saitamaJpgTab.height,
+    },
+  },
+  {
+    title: {
+      text: "Chiba",
+      srcPc: tripTextChibaPc.src,
+      widthPc: tripTextChibaPc.width,
+      heightPc: tripTextChibaPc.height,
+    },
+    href: getPath.chiba.route,
+    bgs: {
+      commonPc: chibaJpg.src,
+      webpPc: chibaWebp.src,
+      widthPc: chibaJpg.width,
+      heightPc: chibaJpg.height,
+      commonSp: chibaJpgSp.src,
+      webpSp: chibaWebpSp.src,
+      widthSp: chibaJpgSp.width,
+      heightSp: chibaJpgSp.height,
+      commonTab: chibaJpgTab.src,
+      webpTab: chibaWebpTab.src,
+      widthTab: chibaJpgTab.width,
+      heightTab: chibaJpgTab.height,
+    },
+  },
+  {
+    title: {
+      text: "Kanagawa",
+      srcPc: tripTextKanagawaPc.src,
+      widthPc: tripTextKanagawaPc.width,
+      heightPc: tripTextKanagawaPc.height,
+    },
+    href: getPath.kanagawa.route,
+    bgs: {
+      commonPc: kanagawaJpg.src,
+      webpPc: kanagawaWebp.src,
+      widthPc: kanagawaJpg.width,
+      heightPc: kanagawaJpg.height,
+      commonSp: kanagawaJpgSp.src,
+      webpSp: kanagawaWebpSp.src,
+      widthSp: kanagawaJpgSp.width,
+      heightSp: kanagawaJpgSp.height,
+      commonTab: kanagawaJpgTab.src,
+      webpTab: kanagawaWebpTab.src,
+      widthTab: kanagawaJpgTab.width,
+      heightTab: kanagawaJpgTab.height,
+    },
+  },
+  {
+    title: {
+      text: "Yamanashi",
+      srcPc: tripTextYamanashiPc.src,
+      widthPc: tripTextYamanashiPc.width,
+      heightPc: tripTextYamanashiPc.height,
+    },
+    href: getPath.yamanashi.route,
+    bgs: {
+      commonPc: yamanasiJpg.src,
+      webpPc: yamanasiWebp.src,
+      widthPc: yamanasiJpg.width,
+      heightPc: yamanasiJpg.height,
+      commonSp: yamanasiJpgSp.src,
+      webpSp: yamanasiWebpSp.src,
+      widthSp: yamanasiJpgSp.width,
+      heightSp: yamanasiJpgSp.height,
+      commonTab: yamanasiJpgTab.src,
+      webpTab: yamanasiWebpTab.src,
+      widthTab: yamanasiJpgTab.width,
+      heightTab: yamanasiJpgTab.height,
+    },
+  },
+]
+
+type Props = PropsWithClassName
+
+const { className } = Astro.props
+---
+
+<div class:list={[styles.trip, className]}>
+  <ul class={styles.trip__list}>
+    <li class={styles.trip__item}>
+      <a href={getPath.tokyo.route} class={styles.trip__linkArea}>
+        <picture class={styles.trip__picture}>
+          <source
+            srcset={tokyoWebpSp.src}
+            width={tokyoWebpSp.width}
+            height={tokyoWebpSp.height}
+            media="(max-width: 639px)"
+            type="image/webp"
+          />
+          <source
+            srcset={tokyoJpgSp.src}
+            width={tokyoJpgSp.width}
+            height={tokyoJpgSp.height}
+            media="(max-width: 639px)"
+          />
+          <source srcset={tokyoAllWebp.src} width={tokyoAllWebp.width} height={tokyoAllWebp.height} type="image/webp" />
+          <img
+            class={styles.trip__bg}
+            src={tokyoAllJpg.src}
+            width={tokyoAllJpg.width}
+            height={tokyoAllJpg.height}
+            loading="lazy"
+            decoding="async"
+            alt=""
+          />
+        </picture>
+        <h3 class={styles.trip__title}><span class="u-uppercase">Tokyo</span> With ALL</h3>
+        <LinkPrimary tag={"p"} className={styles.trip__link} theme={"tokyo"}>For Details</LinkPrimary>
+      </a>
+    </li>
+    {
+      trips.map(
+        ({
+          title,
+          href,
+          bgs: {
+            commonPc,
+            webpPc,
+            widthPc,
+            heightPc,
+            commonSp,
+            webpSp,
+            widthSp,
+            heightSp,
+            commonTab,
+            webpTab,
+            widthTab,
+            heightTab,
+          },
+        }) => (
+          <li class={styles.trip__item}>
+            <a href={href} class={styles.trip__linkArea} data-area={title.text.toLowerCase()}>
+              <picture class={styles.trip__picture}>
+                <source
+                  srcset={webpSp}
+                  width={widthSp}
+                  height={heightSp}
+                  media="(max-width: 639px)"
+                  type="image/webp"
+                />
+                <source srcset={commonSp} width={widthSp} height={heightSp} media="(max-width: 639px)" />
+                <source
+                  srcset={webpTab}
+                  width={widthTab}
+                  height={heightTab}
+                  media="(max-width: 1023px)"
+                  type="image/webp"
+                />
+                <source srcset={commonTab} width={widthTab} height={heightTab} media="(max-width: 1023px)" />
+                <source srcset={webpPc} type="image/webp" />
+                <img
+                  class={styles.trip__bg}
+                  src={commonPc}
+                  width={widthPc}
+                  height={heightPc}
+                  loading="lazy"
+                  decoding="async"
+                  aria-hidden="true"
+                  alt=""
+                />
+              </picture>
+              <h3 class={styles.trip__title} data-area={title.text.toLowerCase()}>
+                <span class:list={[styles.trip__titleText, "sm:hidden", "u-uppercase"]}>
+                  <span>Tokyo</span>
+                  <span>&</span>
+                  <span>{title.text}</span>
+                </span>
+                <picture class:list={[styles.trip__titlePicture, "max-sm:hidden"]}>
+                  <source srcset={title.srcPc} width={title.widthPc} height={title.heightPc} type="image/webp" />
+                  <img
+                    src={title.srcPc}
+                    width={title.widthPc}
+                    height={title.heightPc}
+                    loading="lazy"
+                    decoding="async"
+                    alt={`Tokyo & ${title.text}`}
+                  />
+                </picture>
+              </h3>
+              <LinkPrimary tag={"p"} className={styles.trip__link} theme={"tokyo"}>
+                For Details
+              </LinkPrimary>
+            </a>
+          </li>
+        )
+      )
+    }
+  </ul>
+</div>

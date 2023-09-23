@@ -1,0 +1,13 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.inner {
+  // TODO: TAB 合わせるかどうか検討
+  padding-left: 10px;
+  @include mq(md) {
+    padding-left: 7px;
+  }
+  @include mq(lg) {
+    padding-left: 10px;
+  }
+}

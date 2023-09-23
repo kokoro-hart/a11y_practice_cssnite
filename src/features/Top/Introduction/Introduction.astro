@@ -1,0 +1,48 @@
+---
+import styles from "./Introduction.module.scss"
+
+import mapPc from "@/assets/images/top/map_pc.png"
+import mapSp from "@/assets/images/top/map_sp.png"
+import mapTab from "@/assets/images/top/map_tab.png"
+import Heading from "@/components/Heading/Heading.astro"
+---
+
+<div class={styles.introduction}>
+  <div class={styles.introduction__inner}>
+    <div class={styles.introduction__body}>
+      <div class={styles.introduction__heading}>
+        <Heading>Introduction</Heading>
+      </div>
+      <p class={styles.introduction__desc}>
+        The Tokyo 2020 Games were postponed for the first time in history and held in 2021 amidst the major changes in
+        the lives of people around the world due to the spread of the new coronavirus infection.
+        <br />
+        Various efforts, both in terms of hardware and software, were made in cooperation not only with Tokyo, where many
+        competition venues are located, but also with neighboring prefectures.
+        <br />
+        The Games were not only a sports festival, but also an expansive event in terms of fields and regions that will pass
+        on the experience and legacy of the Games to the next generation.
+        <br />
+        <br />
+        The Tokyo metropolitan area, centered on Tokyo, has an extensive transportation network that provides smooth access
+        to neighboring prefectures.
+        <br />
+        This section introduces the legacy of the Games in Tokyo's National Stadium, which was used as the main stadium for
+        the Olympics, as well as the four neighboring prefectures of Saitama, Chiba, Kanagawa, and Yamanashi, and introduces
+        sightseeing spots in the surrounding area.
+      </p>
+    </div>
+    <picture class={styles.introduction__imgWrap}>
+      <source srcset={mapSp.src} width={mapSp.width} height={mapSp.height} media="(max-width: 767px)" />
+      <source srcset={mapTab.src} width={mapTab.width} height={mapTab.height} media="(max-width: 1023px)" />
+      <img
+        src={mapPc.src}
+        width={mapPc.width}
+        height={mapPc.height}
+        decoding="async"
+        loading="lazy"
+        alt="Map of Kanto Region in Japan"
+      />
+    </picture>
+  </div>
+</div>
