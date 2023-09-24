@@ -1,68 +1,10 @@
 ---
-import styles from "./index.module.scss"
 
-import IconSpot from "@/assets/images/icons/IconSpot.astro"
-import IconTripIdea from "@/assets/images/icons/IconTripIdea.astro"
-import Video from "@/assets/images/icons/IconVideo.astro"
-import Heading from "@/components/Heading/Heading.astro"
-import FourPieceSlider from "@/components/Sliders/FourPieceSlider/FourPieceSlider.astro"
-import Videos from "@/components/Videos/Videos.astro"
-import spotsData from "@/data/spots.json"
-import Spots from "@/features/Spots/Spots.astro"
-import Introduction from "@/features/Top/Introduction/Introduction.astro"
-import MainVisual from "@/features/Top/MainVisual/MainVisual.astro"
-import Navigation from "@/features/Top/Navigation/Navigation.astro"
-import TripIdea from "@/features/Top/TripIdea/TripIdea.astro"
-import { useFormatAllSpots } from "@/hooks"
 import AppLayout from "@/layouts/AppLayout/AppLayout.astro"
-import Container from "@/layouts/Container/Container.astro"
 
 const meta = {
-  description:
-    "The Tokyo 2020 Games were postponed for the first time in history and held in 2021 amidst the major changes in the lives of people around the world due to the spread of the new coronavirus infection.Various efforts, both in terms of hardware and software, were made in cooperation not only with Tokyo, where many competition venues are located, but also with neighboring prefectures.The Games were not only a sports festival, but also an expansive event in terms of fields and regions that will pass on the experience and legacy of the Games to the next generation.The Tokyo metropolitan area, centered on Tokyo, has an extensive transportation network that provides smooth access to neighboring prefectures.This section introduces the legacy of the Games in Tokyo's National Stadium, which was used as the main stadium for the Olympics, as well as the four neighboring prefectures of Saitama, Chiba, Kanagawa, and Yamanashi, and introduces sightseeing spots in the surrounding area.",
+  description: "description",
 }
-
-const { spotCards, categories } = useFormatAllSpots(spotsData)
 ---
 
-<AppLayout meta={meta} theme={"tokyo"}>
-  <div id="top" class="js-section">
-    <MainVisual />
-
-    <Container className={"pt-[21px] md:pt-[26px] lg:pt-[39px]"}>
-      <Navigation />
-      <section class={"mt-[53px] md:mt-[75px] lg:mt-[98px]"}>
-        <Introduction />
-      </section>
-    </Container>
-  </div>
-
-  <Container size={"md"} className={"mt-[30px] md:mt-[82px] lg:mt-[89px]"}>
-    <section id="spot" class:list={[styles.index__spot, "js-trigger", "js-section"]}>
-      <Heading className={"justify-center"}><IconSpot />Spot</Heading>
-      <Spots className={"mt-[22px] md:mt-[7px] lg:mt-[34px]"} cards={spotCards} categories={categories} />
-    </section>
-
-    <section id="route" class:list={["mt-[76px] md:mt-[59px] lg:mt-[72px]", "js-trigger", "js-section"]}>
-      <Heading className={"justify-center"}>
-        <IconTripIdea />
-        Trip Idea
-      </Heading>
-      <TripIdea className={"mt-[24px] md:mt-[27px] lg:mt-[47px]"} />
-    </section>
-  </Container>
-
-  <section id="video" class:list={[styles.index__videos, "mt-[80px] md:mt-[78px]", "js-trigger", "js-section"]}>
-    <Container size={"md"}>
-      <Videos>
-        <Heading className={"justify-center"}><Video />Video</Heading>
-      </Videos>
-    </Container>
-  </section>
-
-  <section class={styles.index__banners}>
-    <Container size={"md"}>
-      <FourPieceSlider />
-    </Container>
-  </section>
-</AppLayout>
+<AppLayout meta={meta} theme={"tokyo"}>test</AppLayout>
