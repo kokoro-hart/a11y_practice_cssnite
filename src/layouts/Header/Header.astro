@@ -1,55 +1,57 @@
 ---
 import styles from "./Header.module.scss"
+import IconTwitter from "@/assets/images/icons/IconTwitter.astro"
+import IconGIthub from "@/assets/images/icons/IconGIthub.astro"
 
-import HeaderHeading from "@/assets/images/common/HeaderHeading.astro"
-import Drawer from "@/components/Drawer/Drawer.astro"
-import { getPath, testPath } from "@/utils"
+import { getPath } from "@/utils"
 
-const currentPath = Astro.url.pathname
-const isTopPage = testPath.isTop(currentPath)
+const nav = [
+  {
+    name: "Home",
+    path: getPath.top,
+  },
+  {
+    name: "Blog",
+    path: getPath.blog,
+  },
+  {
+    name: "About",
+    path: getPath.about,
+  },
+]
+
+const { pathname } = Astro.url
+const getIsCurrent = (path: string) => path === pathname || path === pathname.replace(/\/$/, "")
 ---
 
-<header id="js-header" class={styles.header}>
-  <div class={styles.header__inner}>
-    <a class={styles.header__copy} href={getPath.top}>
-      <span class="sr-only">Connected Japan Awaits You</span>
-      <HeaderHeading className={styles.header__heading} width={411} height={16} />
-    </a>
-    <nav class:list={[styles.header__nav, "u-hideSP", "js-slide-line-nav"]}>
-      <ul class={styles.header__list}>
-        {
-          !isTopPage && (
-            <li class:list={[styles.header__item, "js-nav-slide-item"]}>
-              <a href={getPath.top} class={styles.header__link} data-withicon="true">
-                Back to Top
-              </a>
-            </li>
-          )
-        }
-        <li class:list={[styles.header__item, "js-nav-slide-item"]}>
-          <button
-            type="button"
-            class:list={[styles.header__link, "u-uppercase"]}
-            data-micromodal-trigger="video-modal"
-            aria-label="Open the modal and watch the video">Video</button
-          >
-        </li>
-        <li class:list={[styles.header__item, "js-nav-slide-item"]}>
-          <a href={isTopPage ? "#spot" : "/#spot"} class:list={[styles.header__link, "u-uppercase"]}>Spot</a>
-        </li>
-        <li class:list={[styles.header__item, "js-nav-slide-item"]}>
-          <a href={isTopPage ? "#route" : "/#route"} class:list={[styles.header__link, "u-uppercase"]}>Route</a>
-        </li>
-      </ul>
-    </nav>
-    <div class:list={[styles.header__list, "u-hidePC"]}>
-      <button
-        type="button"
-        class:list={[styles.header__videoTrigger, "u-uppercase"]}
-        data-micromodal-trigger="video-modal"
-        aria-label="Open the modal and watch the video">Video</button
-      >
-      <Drawer />
+<header class={styles.header}>
+  <nav class={styles.nav} aria-label={"サイトメニュー"}>
+    <h2><a href="/">A11y Practice</a></h2>
+    <ul class={styles.initial_links}>
+      {
+        nav.map(({ name, path }) => (
+          <li>
+            <a
+              href={path}
+              class={styles.link}
+              data-current={`${getIsCurrent(path)}`}
+              aria-current={getIsCurrent(path) ? "page" : "false"}
+            >
+              {name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class={styles.social_Links}>
+      <a href="https://twitter.com/astrodotbuild" target="_blank">
+        <span class="sr-only">Follow Astro on Twitter</span>
+        <IconTwitter />
+      </a>
+      <a href="https://github.com/withastro/astro" target="_blank">
+        <span class="sr-only">Go to Astro's GitHub repo</span>
+        <IconGIthub />
+      </a>
     </div>
-  </div>
+  </nav>
 </header>

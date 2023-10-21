@@ -1,10 +1,12 @@
 ---
-
 import AppLayout from "@/layouts/AppLayout/AppLayout.astro"
+import Container from "@/layouts/Container/Container.astro"
 
 const meta = {
   description: "description",
 }
 ---
 
-<AppLayout meta={meta} theme={"tokyo"}>test</AppLayout>
+<AppLayout meta={meta}>
+  <Container />
+</AppLayout>

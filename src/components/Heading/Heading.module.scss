@@ -8,7 +8,6 @@
   gap: 8px;
   align-items: center;
 
-  // TODO: あとで調整する
   &[data-size="xs"] {
     @include fz(24);
     @include lh(29.26, 24);
@@ -26,7 +25,6 @@
     }
   }
 
-  // TODO: あとで調整する
   &[data-size="sm"] {
     @include fz(26);
     @include lh(31, 26);
@@ -39,7 +37,6 @@
     }
   }
 
-  // TODO: あとで調整する
   &[data-size="md"] {
     @include fz(26);
     @include lh(31, 26);
@@ -54,7 +51,6 @@
     }
   }
 
-  // TODO: あとで調整する
   &[data-size="lg"] {
     @include fz(26);
     @include lh(31, 26);

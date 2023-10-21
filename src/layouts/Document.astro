@@ -40,7 +40,6 @@ const url = `${origin}${Astro.url.pathname}`
     <link rel="dns-prefetch" href="https://use.typekit.net" />
     <link rel="preconnect" href="https://use.typekit.net" crossorigin />
 
-    {/* *** common *** ★忘れずに指定 */}
     <meta name="og:url" property="og:url" content={url} />
     <meta name="og:title" property="og:title" content={formats.title} />
     <meta name="og:description" property="og:description" content={meta.description} />
@@ -49,18 +48,14 @@ const url = `${origin}${Astro.url.pathname}`
     {meta["og:image"] && <meta name="og:image" property="og:image" content={origin + meta["og:image"]} />}
     <link rel="canonical" href={url} />
 
-    {/* *** Twitter *** ★忘れずに指定 */}
     <meta name="twitter:card" content="summary_large_image" />
-    {/* TODO: Twitterアカウント、忘れずに指定。不明な場合はクライアントに確認する*/}
     <meta name="twitter:site" content="@dummy" />
     <meta name="twitter:description" content={meta.description} />
 
-    {/* *** favicon *** ★忘れずに指定  */}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon.ico" sizes="any" /><!-- 32×32 -->
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" /><!-- 180×180 -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    {/* Font  */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -68,23 +63,10 @@ const url = `${origin}${Astro.url.pathname}`
       rel="stylesheet"
     />
 
-    {/* xml sitemap  */}
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <script>
       import "@/assets/scripts/app"
-    </script>
-
-    {/* Google Analytics */}
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-EF9SHRS4SD"></script>
-    <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag("js", new Date())
-
-      gtag("config", "G-EF9SHRS4SD")
     </script>
   </head>
   <body>

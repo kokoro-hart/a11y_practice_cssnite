@@ -2,154 +2,41 @@
 @use "@/assets/styles/global" as *;
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
+  margin: 0;
+  padding: 0 1em;
+  background: $color_white;
   z-index: var(--zindex-header);
-  width: 100%;
-  height: $header_height_sp;
-  background-color: $color_white;
-
-  &::after {
-    position: absolute;
-    right: 0;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    content: "";
-    background: linear-gradient(191deg, #cf1225 9.18%, #c8cb2f 28.99%, #a35abd 48.92%, #80ce7e 66.35%, #00a3ff 83.67%);
-  }
-
-  @include mq(md) {
-    height: $header_height;
-  }
+  box-shadow: 0 2px 8px rgba($color_black, 5%);
 }
 
-.header__inner {
+h2 {
+  margin: 0;
+  font-size: 1em;
+}
+
+h2 a,
+h2 a[data-current="true"] {
+  text-decoration: none;
+}
+.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  height: inherit;
-  padding-right: 9px;
-  padding-left: 13px;
-
-  @include mq(md) {
-    padding-right: 13px;
-    padding-left: 14px;
-  }
-
-  @include mq(lg) {
-    padding-right: 22px;
-    padding-left: 23px;
-  }
 }
 
-.header__copy {
-  @include hover_opacity(0.7, 0.3s);
+.nav a {
+  padding: 1em 0.5em;
+  color: $color_black;
+  border-bottom: 4px solid transparent;
+  text-decoration: none;
 }
 
-.header__heading {
-  width: 208px;
-  height: 9px;
-
-  @include mq(md) {
-    width: 316px;
-    height: 16px;
-  }
-
-  @include mq(lg) {
-    width: 411px;
-    height: 16px;
-  }
+.nav a[data-current="true"] {
+  text-decoration: none;
+  border-color: $color_primary;
 }
 
-.header__nav {
-  position: relative;
-  height: inherit;
-}
-
-.header__list {
+.social_links,
+.social_links a {
   display: flex;
-  align-items: center;
-  height: inherit;
-
-  @include mq(md, max) {
-    gap: 12px;
-  }
-}
-
-.header__item {
-  height: inherit;
-}
-
-.header__link {
-  position: relative;
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  height: inherit;
-  padding-right: 20px;
-  padding-left: 20px;
-  @include fz(16);
-  @include lh(19.5, 16);
-  @include font_secondary;
-
-  letter-spacing: 0.8px;
-
-  @include mq(md) {
-    padding-right: 12px;
-    padding-left: 12px;
-  }
-
-  @include mq(lg) {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-
-  @include mq(md, max) {
-    letter-spacing: -0.08px;
-  }
-
-  &[data-withicon="true"] {
-    @include mq(md, max) {
-      @include fz(12);
-    }
-
-    @include mq(md) {
-      @include fz(14);
-    }
-
-    @include mq(lg) {
-      @include fz(16);
-    }
-
-    &::before {
-      width: 19px;
-      height: 19px;
-      content: "";
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20width%3D%2228%22%20height%3D%2227%22%20viewBox%3D%220%200%2028%2027%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M0.933984%2013.5C0.933984%2020.7268%206.77714%2026.57%2014.004%2026.57C21.2308%2026.57%2027.074%2020.7268%2027.074%2013.5C27.074%206.27314%2021.2308%200.429987%2014.004%200.429987C6.77714%200.429987%200.933984%206.27314%200.933984%2013.5ZM2.75398%2013.5C2.75398%207.27483%207.77883%202.24999%2014.004%202.24999C20.2291%202.24999%2025.254%207.27483%2025.254%2013.5C25.254%2019.7251%2020.2291%2024.75%2014.004%2024.75C7.77883%2024.75%202.75398%2019.7251%202.75398%2013.5Z%22%20fill%3D%22black%22%20stroke%3D%22black%22%20stroke-width%3D%220.3%22%2F%3E%3Cpath%20d%3D%22M14.1263%2020.9779L14.2324%2021.084L14.3384%2020.9779L15.4024%2019.9139L15.5085%2019.8078L15.4024%2019.7018L9.20048%2013.4998L15.4024%207.2979L15.5085%207.19184L15.4024%207.08577L14.3384%206.02177L14.2324%205.91571L14.1263%206.02177L6.75429%2013.3938L6.64822%2013.4998L6.75429%2013.6059L14.1263%2020.9779Z%22%20fill%3D%22black%22%20stroke%3D%22black%22%20stroke-width%3D%220.3%22%2F%3E%3Cpath%20d%3D%22M7.92383%2012.5901H7.77383V12.7401V14.2601V14.4101H7.92383H20.8438H20.9938V14.2601V12.7401V12.5901H20.8438H7.92383Z%22%20fill%3D%22black%22%20stroke%3D%22black%22%20stroke-width%3D%220.3%22%2F%3E%3C%2Fsvg%3E");
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      transform: translateY(-1px);
-
-      @include mq(lg) {
-        width: 26px;
-        height: 26px;
-      }
-    }
-  }
-
-  @include hover_opacity(0.5);
-}
-
-.header__videoTrigger {
-  height: inherit;
-  @include fz(16);
-  @include lh(19.5, 16);
-
-  letter-spacing: -0.08px;
-  @include font_weight_bold;
 }

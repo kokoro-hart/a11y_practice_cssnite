@@ -21,5 +21,5 @@
   },
   "extends": "astro/tsconfigs/strict",
   "exclude": ["node_modules"],
-  "include": ["src/**/*.ts", "src/**/*.astro", "src/assets/scripts/utility/debounce.ts"]
+  "include": ["src/**/*.ts", "src/**/*.astro"]
 }

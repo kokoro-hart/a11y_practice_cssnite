@@ -1,8 +1,8 @@
-lang: "en"
-siteName: "CONNECTED JAPAN AWAITS YOU"
+lang: "ja"
+siteName: "A11y Practice"
 
 meta:
-  title: "CONNECTED JAPAN AWAITS YOU"
+  title: "A11y Practice"
   description: "not description"
   "og:title": "not title"
   "og:description": "not description"

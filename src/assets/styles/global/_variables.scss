@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-// ブレイクポイント
 $breakpoints: (
   sm: 640px,
   md: 768px,
@@ -17,22 +16,14 @@ $content_padding_sm: 23px;
 $content_padding_md: 40px;
 $content_padding_lg: 60px;
 
-// カラー
 $color_black: #000;
 $color_white: #fff;
 $color_gray: #757578;
+$color_primary: #3ea8ff;
 
-$color_primary_tokyo: #2f8d2f;
-$color_primary_saitama: #ce3434;
-$color_primary_chiba: #1a62c7;
-$color_primary_kanagawa: #f54545;
-$color_primary_yamanashi: #95268a;
-
-// イージング
 $ease_out_quint: cubic-bezier(0.22, 1, 0.36, 1);
 $ease_out_cubic: cubic-bezier(0.33, 1, 0.68, 1);
 $ease_in_out_quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-// Headerの高さ
 $header_height: 64px;
 $header_height_sp: 41px;

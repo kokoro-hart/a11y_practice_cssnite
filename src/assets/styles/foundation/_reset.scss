@@ -8,7 +8,9 @@
   line-height: inherit;
 }
 
-*, ::after, ::before {
+*,
+::after,
+::before {
   box-sizing: border-box;
 }
 
@@ -24,13 +26,12 @@ body {
 
 body {
   color: $color_black;
+  background-color: $color_white;
   overflow-wrap: break-word;
-  background: url("/base_bg.png"), lightgray 0 -1.693px / 655.637% 1773.788% no-repeat;
 
   @include fz(16);
   @include font_primary;
 
-  // 背景固定
   &._isScrollLock {
     position: fixed;
     left: 0;
@@ -154,7 +155,7 @@ q::before {
 }
 
 :focus-visible {
-  box-shadow: 0 0 0 3px rgba($color_primary_tokyo, 0.6);
+  box-shadow: 0 0 0 3px rgba(#3ea8ff, 0.6);
 }
 
 /* form */

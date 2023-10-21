@@ -3,8 +3,6 @@
 @use "breakpoint";
 @use "variables";
 
-// コンテンツ幅
-// $width: sm || md || lg
 @mixin content_width($width: md) {
   width: 100%;
   padding-right: variables.$content_padding_sm;
@@ -13,13 +11,11 @@
   margin-left: auto;
 
   @if $width == sm {
-    // TODO: あとで調整する
     @include breakpoint.mq(md) {
       padding-right: 60px;
       padding-left: 60px;
     }
   } @else if $width == md {
-    // TODO: あとで調整する
     @include breakpoint.mq(md) {
       padding-right: variables.$content_padding_lg;
       padding-left: variables.$content_padding_lg;
@@ -30,7 +26,6 @@
       padding-left: variables.$content_padding_lg;
     }
   } @else if $width == xl {
-    // TODO: あとで調整する
     @include breakpoint.mq(md) {
       padding-right: 60px;
       padding-left: 60px;
@@ -62,7 +57,6 @@
   }
 }
 
-// clampの推奨値を計算する（プロパティ指定あり）
 @mixin clamp_mix($property, $minBp, $maxBp, $minVal, $maxVal) {
   $a: calc(100 * ($maxVal - $minVal) / ($maxBp - $minBp));
   $b: calc($minVal - ($minBp / 100) * $a);
@@ -71,7 +65,6 @@
   #{$property}: clamp(#{$minVal}px, #{$vw}, #{$maxVal}px);
 }
 
-// clampの推奨値を計算する（プロパティ指定なし）
 @function clamp_value($minBp, $maxBp, $minVal, $maxVal) {
   $a: calc(100 * ($maxVal - $minVal) / ($maxBp - $minBp));
   $b: calc($minVal - ($minBp / 100) * $a);
@@ -80,8 +73,6 @@
   @return clamp(#{$minVal}px, #{$vw}, #{$maxVal}px);
 }
 
-// object-fit
-// $fit: object-fit値、$position: object-position値
 @mixin object_fit($fit: cover, $position: null) {
   object-fit: $fit;
 
@@ -93,9 +84,6 @@
   }
 }
 
-// visually-hidden:
-// 視覚的にコンテンツを非表示にしたい場合や、スクリーンリーダーや
-// 検索エンジンからアクセスできるようにしたい場合に使う
 @mixin visually_hidden {
   position: absolute;
   width: 1px;
@@ -107,8 +95,6 @@
   border: 0;
 }
 
-// 行数制御
-// 引数の数値以下の行数は表示し、それ以上の行数は「...」で省略する
 @mixin line_clamp($count: 3) {
   @if type-of($count) != "number" {
     @error 'line-clampの引数は必ず数値で指定してください';
@@ -126,14 +112,12 @@
   }
 }
 
-// 印刷対応
 @mixin print {
   @media print {
     @content;
   }
 }
 
-// @include clearfix;
 @mixin clearfix {
   &::after {
     display: block;
@@ -142,30 +126,24 @@
   }
 }
 
-// ブラウザハック
-
-// Mozilla Firefox
 @mixin only_firefox {
   @supports (-moz-appearance: meterbar) {
     @content;
   }
 }
 
-// Safari
 @mixin only_safari {
   @supports (paint-order: fill) and (-webkit-marquee-speed: 0) {
     @content;
   }
 }
 
-// iOS Safari
 @mixin only_iOS {
   @supports (-webkit-text-size-adjust: none) and (not (-ms-accelerator: true)) and (not (-moz-appearance: none)) {
     @content;
   }
 }
 
-// Microsoft Edge
 @mixin only_edge {
   @supports (-ms-ime-align: auto) {
     @content;

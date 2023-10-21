@@ -1,25 +1,18 @@
 ---
 import Document, { DocumentProps } from "../Document.astro"
-import Footer from "../Footer/Footer.astro"
 import Header from "../Header/Header.astro"
 
 import styles from "./AppLayout.module.scss"
 
-import type { Area } from "@/types"
-
-type Props = DocumentProps & {
-  theme: Area
-}
-const { theme, ...props } = Astro.props
+const { ...props } = Astro.props
 ---
 
 <Document {...props}>
-  <a href="#start-of-content" class:list={[styles.linkSkip, "sr-only"]}>Skip to main contents</a>
+  <a href="#start-of-content" class={styles.linkSkip}>Skip to main contents</a>
   <div id="app" class={styles.appLayout}>
     <Header />
     <main id="start-of-content" class={styles.appLayout__main}>
       <slot />
     </main>
-    <Footer />
   </div>
 </Document>
