@@ -1,0 +1,64 @@
+---
+import styles from "./Header.module.scss"
+import IconTwitter from "@/assets/images/icons/IconTwitter.astro"
+import IconGIthub from "@/assets/images/icons/IconGIthub.astro"
+
+import { getPath, testPath } from "@/utils"
+
+const nav = [
+  {
+    name: "Home",
+    path: getPath.top,
+  },
+  {
+    name: "Blog",
+    path: getPath.blog,
+  },
+  {
+    name: "About",
+    path: getPath.about,
+  },
+]
+
+const { pathname } = Astro.url
+const isTopPage = testPath.isTop(pathname)
+const LogoTag = isTopPage ? "h1" : "div"
+
+const getIsCurrent = (path: string) => path === pathname || path === pathname.replace(/\/$/, "")
+---
+
+<header class={styles.header}>
+  <LogoTag class={styles.logo}>
+    <a href={getPath.top}>A11y Practice</a>
+  </LogoTag>
+  <div class={styles.inner}>
+    <nav class={styles.nav} aria-label={"サイトメニュー"}>
+      <ul class={styles.list}>
+        {
+          nav.map(({ name, path }) => (
+            <li class={styles.item}>
+              <a
+                href={path}
+                class={styles.link}
+                data-current={`${getIsCurrent(path)}`}
+                aria-current={getIsCurrent(path) ? "page" : "false"}
+              >
+                {name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class={styles.social_Links}>
+      <a href="https://twitter.com/astrodotbuild" target="_blank">
+        <span class="sr-only">AstroのTwitterへ</span>
+        <IconTwitter />
+      </a>
+      <a href="https://github.com/withastro/astro" target="_blank">
+        <span class="sr-only">AstroのGithubリポジトリへ</span>
+        <IconGIthub />
+      </a>
+    </div>
+  </div>
+</header>

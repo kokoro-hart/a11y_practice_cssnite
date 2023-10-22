@@ -1,0 +1,64 @@
+@charset "utf-8";
+@use "@/assets/styles/global" as *;
+
+.header {
+  margin: 0;
+  padding: 0 24px;
+  background: $color_white;
+  z-index: var(--zindex-header);
+  box-shadow: 0 2px 8px rgba($color_black, 5%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  @include fz(16);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.list {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.link {
+  position: relative;
+  display: block;
+  padding: 16px 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $color_primary;
+    opacity: 0;
+  }
+
+  &[data-current="true"] {
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+.social_Links {
+  display: flex;
+
+  & > a {
+    display: block;
+    padding: 10px;
+    @include hover_opacity;
+  }
+}
