@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   margin: 0;
-  padding: 0 40px;
+  padding: 3px 40px 0;
   background: $color_white;
   z-index: var(--zindex-header);
   box-shadow: 0 2px 8px rgba($color_black, 5%);
@@ -17,6 +17,15 @@
 
 .logo {
   @include fz(16);
+  font-weight: 700;
+
+  a {
+    display: block;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .list {

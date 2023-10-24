@@ -26,7 +26,7 @@ body {
 
 body {
   color: $color_black;
-  background-color: $color_white;
+  background-color: #f3f4f6;
   overflow-wrap: break-word;
 
   @include fz(16);
