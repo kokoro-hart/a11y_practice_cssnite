@@ -40,6 +40,10 @@ body {
   }
 }
 
+[hidden] {
+  display: block !important;
+}
+
 html,
 body,
 h1,
@@ -155,7 +159,7 @@ q::before {
 }
 
 :focus-visible {
-  box-shadow: 0 0 0 3px rgba(#3ea8ff, 0.6);
+  box-shadow: 0 0 0 3px rgba(#0f83fd, 0.6);
 }
 
 /* form */

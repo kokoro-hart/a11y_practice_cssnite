@@ -2,8 +2,11 @@
 @use "@/assets/styles/global" as *;
 
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
   margin: 0;
-  padding: 0 24px;
+  padding: 0 40px;
   background: $color_white;
   z-index: var(--zindex-header);
   box-shadow: 0 2px 8px rgba($color_black, 5%);
@@ -14,13 +17,6 @@
 
 .logo {
   @include fz(16);
-}
-
-.inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
 }
 
 .list {
@@ -50,15 +46,5 @@
     &:after {
       opacity: 1;
     }
-  }
-}
-
-.social_Links {
-  display: flex;
-
-  & > a {
-    display: block;
-    padding: 10px;
-    @include hover_opacity;
   }
 }

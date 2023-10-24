@@ -2,7 +2,6 @@ import { createRequire } from "module"
 import path from "path"
 import { fileURLToPath } from "url"
 
-import mdx from '@astrojs/mdx';
 import sitemap from "@astrojs/sitemap"
 import yaml from "@rollup/plugin-yaml"
 import { defineConfig } from "astro/config"
@@ -40,7 +39,6 @@ export default defineConfig({
     [tailwind({
       applyBaseStyles: false,
     })],
-    mdx(),
   ],
   vite: {
     build: {

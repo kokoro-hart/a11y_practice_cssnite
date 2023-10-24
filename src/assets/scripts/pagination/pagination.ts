@@ -15,6 +15,8 @@ export class Pagination {
 
   readonly perPageUnderMd!: number
 
+  readonly articlesWrap!: HTMLElement
+
   currentPagerEl: HTMLElement | undefined
 
   totalPage: number
@@ -34,7 +36,7 @@ export class Pagination {
   constructor(
     props: Pick<
       Pagination,
-      "targetNodes" | "pageCounterWrap" | "buttonPrev" | "buttonNext" | "perPageMd" | "perPageUnderMd"
+      "targetNodes" | "pageCounterWrap" | "buttonPrev" | "buttonNext" | "perPageMd" | "perPageUnderMd" | "articlesWrap"
     >
   ) {
     Object.assign(this, props)
@@ -95,10 +97,12 @@ export class Pagination {
   protected registerEvents() {
     this.buttonNext.addEventListener("click", () => {
       this.updatePageState((this.currentPager += 1))
+      // setFocusableNode(this.articlesWrap)
     })
 
     this.buttonPrev.addEventListener("click", () => {
       this.updatePageState((this.currentPager -= 1))
+      // setFocusableNode(this.articlesWrap)
     })
   }
 

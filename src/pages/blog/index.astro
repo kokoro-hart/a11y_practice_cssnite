@@ -1,10 +1,11 @@
 ---
+import CardsWithPaginationFilter from "@/components/CardsWithPaginationFilter/CardsWithPaginationFilter.astro"
+import Heading from "@/components/Heading/Heading.astro"
+import { usePosts } from "@/hooks"
 import AppLayout from "@/layouts/AppLayout/AppLayout.astro"
 import Container from "@/layouts/Container/Container.astro"
 
-import { getCollection } from "astro:content"
-
-const posts = (await getCollection("blog")).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+const { posts, categories } = await usePosts()
 
 const meta = {
   description: "description",
@@ -13,18 +14,9 @@ const meta = {
 
 <AppLayout meta={meta}>
   <Container>
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.slug}/`}>
-              <img width={720} height={360} src={post.data.heroImage} alt="" loading="lazy" decoding="async" />
-              <h4 class="title">{post.data.title}</h4>
-              <p class="date">{post.data.pubDate}</p>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    <section>
+      <Heading className={"justify-center"}>記事一覧</Heading>
+      <CardsWithPaginationFilter cards={posts} categories={categories} />
+    </section>
   </Container>
 </AppLayout>

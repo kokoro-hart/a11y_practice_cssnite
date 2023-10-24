@@ -1,21 +1,9 @@
 import { lockScroll, matchMedia } from "../utility"
 import type { Size } from "../utility"
 
-const { lock, unlock } = lockScroll()
+import { FOCUSABLE_ELEMENTS } from "@/consts"
 
-const FOCUSABLE_ELEMENTS = [
-  "a[href]",
-  "area[href]",
-  'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
-  "select:not([disabled]):not([aria-hidden])",
-  "textarea:not([disabled]):not([aria-hidden])",
-  "button:not([disabled]):not([aria-hidden])",
-  "iframe",
-  "object",
-  "embed",
-  "[contenteditable]",
-  '[tabindex]:not([tabindex^="-"])',
-].join(", ")
+const { lock, unlock } = lockScroll()
 
 class HamburgerMenu {
   readonly triggerButton!: HTMLElement

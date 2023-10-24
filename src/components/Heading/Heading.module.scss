@@ -44,7 +44,7 @@
     letter-spacing: 1.3px;
 
     @include mq(md) {
-      @include clamp_mix("font-size", 768, 1536, 30, 40);
+      @include clamp_mix("font-size", 768, 1536, 20, 32);
       @include lh(49, 40);
 
       letter-spacing: 0.05em;

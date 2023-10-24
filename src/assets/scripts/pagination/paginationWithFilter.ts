@@ -1,4 +1,8 @@
+import { setFocusableNode } from "../utility"
+
 import { Pagination } from "./pagination"
+
+import { INITIAL_CATEGORY } from "@/consts"
 
 class PaginationWithFilter extends Pagination {
   readonly totalArticleNodes: NodeListOf<HTMLElement>
@@ -12,7 +16,14 @@ class PaginationWithFilter extends Pagination {
   constructor(
     props: Pick<
       PaginationWithFilter,
-      "targetNodes" | "pageCounterWrap" | "buttonPrev" | "buttonNext" | "perPageMd" | "perPageUnderMd" | "filterButtons"
+      | "targetNodes"
+      | "pageCounterWrap"
+      | "buttonPrev"
+      | "buttonNext"
+      | "perPageMd"
+      | "perPageUnderMd"
+      | "filterButtons"
+      | "articlesWrap"
     >
   ) {
     super(props)
@@ -25,12 +36,12 @@ class PaginationWithFilter extends Pagination {
 
     this.totalArticleElements = targetNodes.length
 
-    this.currentCategory = "Activity"
+    this.currentCategory = INITIAL_CATEGORY
 
-    this.initCategory()
     this.init()
     this.registerFilterEvents()
     this.paginationWithFilterInit()
+    this.showAllArticles()
   }
 
   paginationWithFilterInit = () => {
@@ -136,6 +147,7 @@ class PaginationWithFilter extends Pagination {
       element.addEventListener("click", () => {
         this.currentPager = Number(element.dataset.counterId)
         this.updatePageState(this.currentPager)
+        setFocusableNode(this.articlesWrap)
       })
     }
   }
@@ -146,29 +158,19 @@ class PaginationWithFilter extends Pagination {
         this.updateFilterState(filterButton)
         this.init()
         this.updatePageState(1)
-        PaginationWithFilter.updateCategoryParams(this.currentCategory)
+
+        if (this.currentCategory === "all") {
+          this.showAllArticles()
+        }
       })
     }
   }
 
-  private initCategory() {
-    const params = new URLSearchParams(window.location.search)
-    const categoryParam = params.get("category")
-
-    if (!categoryParam) return
-    this.currentCategory = categoryParam
-
-    const currentButton = document.querySelector<HTMLElement>(`.js-filterTrigger[data-filter="${categoryParam}"]`)
-    this.updateFilterState(currentButton)
-    PaginationWithFilter.updateCategoryParams(this.currentCategory)
-  }
-
-  static updateCategoryParams(category: string) {
-    const params = new URLSearchParams(window.location.search)
-    params.set("category", category)
-    const currentURL = new URL(window.location.href)
-    currentURL.search = params.toString()
-    window.history.replaceState({}, "", currentURL.toString())
+  private showAllArticles() {
+    this.currentCategory = "all"
+    this.totalArticleElements = this.totalArticleNodes.length
+    this.updateContentsView(1, this.totalArticleElements)
+    this.updatePageState(1)
   }
 
   private getArticleCount(value: Array<string> | string) {
@@ -205,6 +207,7 @@ export const paginationWithFilter = () => {
   const targetRoot = document.querySelector<HTMLElement>("#js-paginationWithFilter")
 
   if (!targetRoot) return
+  const articlesWrap = targetRoot.querySelector<HTMLElement>("#js-articlesWrap")
 
   const targetNodes = targetRoot.querySelectorAll<HTMLElement>(".js-articleItem")
 
@@ -216,13 +219,14 @@ export const paginationWithFilter = () => {
 
   const filterButtons = targetRoot.querySelectorAll<HTMLElement>(".js-filterTrigger")
 
-  if (!targetNodes || !pageCounterWrap || !buttonPrev || !buttonNext || !filterButtons) return
+  if (!targetNodes || !pageCounterWrap || !buttonPrev || !buttonNext || !filterButtons || !articlesWrap) return
 
   const perPage = targetRoot.dataset.perPage
 
   new PaginationWithFilter({
     targetNodes,
     pageCounterWrap,
+    articlesWrap,
     buttonPrev,
     buttonNext,
     filterButtons,
