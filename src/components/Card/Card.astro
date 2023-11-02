@@ -13,8 +13,13 @@ export type CardProps = {
 type Props = CardProps
 
 const { id, title, thumbnail, date, category } = Astro.props
+const foramatedDate = dayjs(date).format("YYYY-MM-DD")
 
-const formatedDate = dayjs(date).format("YYYY-MM-DD")
+// 日付表記の読み上げ
+// 2023-12-01 🙆‍♂️
+// 2023.12.01 🙆‍♂️
+// 2023年12月01日 🙆‍♂️
+// 2023/12/01 ❌
 ---
 
 <article class:list={[styles.card, "js-articleItem"]} data-category={category}>
@@ -32,7 +37,7 @@ const formatedDate = dayjs(date).format("YYYY-MM-DD")
     </div>
     <div class={styles.card__body}>
       <h3 class={styles.card__title} set:html={title} />
-      <time class={styles.card__area} datetime={formatedDate} aria-label={formatedDate}>
+      <time class={styles.card__area} datetime={date} aria-label={foramatedDate}>
         {date}
       </time>
     </div>

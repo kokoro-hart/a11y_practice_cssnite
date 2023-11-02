@@ -1,5 +1,3 @@
-import { setFocusableNode } from "../utility"
-
 import { Pagination } from "./pagination"
 
 import { INITIAL_CATEGORY } from "@/consts"
@@ -143,11 +141,13 @@ class PaginationWithFilter extends Pagination {
 
     this.updateCurrentButton(currentCount)
 
-    for (const element of document.querySelectorAll<HTMLElement>(".pageNumber")) {
+    const pageNumbers = document.querySelectorAll<HTMLElement>(".pageNumber")
+
+    for (const element of pageNumbers) {
       element.addEventListener("click", () => {
         this.currentPager = Number(element.dataset.counterId)
         this.updatePageState(this.currentPager)
-        setFocusableNode(this.articlesWrap)
+        // setFocusableNode(this.articlesWrap)
       })
     }
   }
